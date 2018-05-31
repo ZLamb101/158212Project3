@@ -46,12 +46,24 @@ namespace Assignment3 {
             set { mRegion = value; }
         }
 
-        private List<Player> mPlayers;
-        public List<Player> Players {
+        private List<string> mPlayers;
+        public List<string> Players {
             get { return mPlayers; }
             set { mPlayers = value; }
         }
 
+        
+        public string saveString() {
+            string teamString;
+            teamString = mName + ";" + mGround + ";" + mCoach + ";" + mYearFounded + ";" + mRegion + ';' + mPlayers.Count;
+            for (int i = 0; i< mPlayers.Count; i++) {
+                teamString = teamString + ";" + mPlayers[i];
+            }
+
+            return teamString;
+
+
+        }
     }
 
     
@@ -116,6 +128,18 @@ namespace Assignment3 {
         public string TeamName {
             get { return mTeamName;  }
             set { mTeamName = value; }
+        }
+
+        public string saveString() {
+            string playerString;
+            playerString = mID + ";" + mName + ";" + mBirthDate + ";" + mHeight + ";" + mWeight + ";" + mBirthPlace;
+            if (mTeamName != "") {
+                playerString = playerString + ";" + mTeamName;
+            }
+
+
+            return playerString;
+
         }
 
 
