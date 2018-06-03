@@ -80,6 +80,7 @@
             this.columnBirthPlaceSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnTeamSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.searchByLabel = new System.Windows.Forms.Label();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.menuStrip.SuspendLayout();
             this.enrollmentPage.SuspendLayout();
             this.tabDisplayTeam.SuspendLayout();
@@ -95,7 +96,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(907, 28);
+            this.menuStrip.Size = new System.Drawing.Size(1287, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "menuStrip";
             // 
@@ -115,7 +116,7 @@
             this.playersToolLoadItem});
             this.openTool.Name = "openTool";
             this.openTool.Size = new System.Drawing.Size(216, 26);
-            this.openTool.Text = "Open";
+            this.openTool.Text = "Load";
             // 
             // teamsToolLoadItem
             // 
@@ -172,7 +173,7 @@
             this.enrollmentPage.Location = new System.Drawing.Point(4, 25);
             this.enrollmentPage.Name = "enrollmentPage";
             this.enrollmentPage.Padding = new System.Windows.Forms.Padding(3);
-            this.enrollmentPage.Size = new System.Drawing.Size(855, 414);
+            this.enrollmentPage.Size = new System.Drawing.Size(1255, 590);
             this.enrollmentPage.TabIndex = 4;
             this.enrollmentPage.Text = "Enrollment";
             this.enrollmentPage.UseVisualStyleBackColor = true;
@@ -180,7 +181,7 @@
             // teamSelectedEnrollmentLabel
             // 
             this.teamSelectedEnrollmentLabel.AutoSize = true;
-            this.teamSelectedEnrollmentLabel.Location = new System.Drawing.Point(613, 167);
+            this.teamSelectedEnrollmentLabel.Location = new System.Drawing.Point(512, 245);
             this.teamSelectedEnrollmentLabel.Name = "teamSelectedEnrollmentLabel";
             this.teamSelectedEnrollmentLabel.Size = new System.Drawing.Size(103, 17);
             this.teamSelectedEnrollmentLabel.TabIndex = 8;
@@ -189,7 +190,7 @@
             // playerSelectedEnrollmentLabel
             // 
             this.playerSelectedEnrollmentLabel.AutoSize = true;
-            this.playerSelectedEnrollmentLabel.Location = new System.Drawing.Point(613, 88);
+            this.playerSelectedEnrollmentLabel.Location = new System.Drawing.Point(508, 151);
             this.playerSelectedEnrollmentLabel.Name = "playerSelectedEnrollmentLabel";
             this.playerSelectedEnrollmentLabel.Size = new System.Drawing.Size(107, 17);
             this.playerSelectedEnrollmentLabel.TabIndex = 7;
@@ -197,21 +198,21 @@
             // 
             // teamSelectedEnrollmentTextBox
             // 
-            this.teamSelectedEnrollmentTextBox.Location = new System.Drawing.Point(613, 196);
+            this.teamSelectedEnrollmentTextBox.Location = new System.Drawing.Point(484, 286);
             this.teamSelectedEnrollmentTextBox.Name = "teamSelectedEnrollmentTextBox";
             this.teamSelectedEnrollmentTextBox.Size = new System.Drawing.Size(179, 22);
             this.teamSelectedEnrollmentTextBox.TabIndex = 6;
             // 
             // playerSelectedEnrollmentTextBox
             // 
-            this.playerSelectedEnrollmentTextBox.Location = new System.Drawing.Point(613, 128);
+            this.playerSelectedEnrollmentTextBox.Location = new System.Drawing.Point(484, 197);
             this.playerSelectedEnrollmentTextBox.Name = "playerSelectedEnrollmentTextBox";
             this.playerSelectedEnrollmentTextBox.Size = new System.Drawing.Size(179, 22);
             this.playerSelectedEnrollmentTextBox.TabIndex = 5;
             // 
             // enrollmentButton
             // 
-            this.enrollmentButton.Location = new System.Drawing.Point(626, 260);
+            this.enrollmentButton.Location = new System.Drawing.Point(503, 359);
             this.enrollmentButton.Name = "enrollmentButton";
             this.enrollmentButton.Size = new System.Drawing.Size(140, 39);
             this.enrollmentButton.TabIndex = 4;
@@ -224,9 +225,9 @@
             this.enrollTeamListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.teamEnrollmentHeader});
             this.enrollTeamListView.GridLines = true;
-            this.enrollTeamListView.Location = new System.Drawing.Point(338, 80);
+            this.enrollTeamListView.Location = new System.Drawing.Point(802, 71);
             this.enrollTeamListView.Name = "enrollTeamListView";
-            this.enrollTeamListView.Size = new System.Drawing.Size(179, 317);
+            this.enrollTeamListView.Size = new System.Drawing.Size(339, 465);
             this.enrollTeamListView.TabIndex = 3;
             this.enrollTeamListView.UseCompatibleStateImageBehavior = false;
             this.enrollTeamListView.View = System.Windows.Forms.View.Details;
@@ -243,9 +244,9 @@
             this.columnHeader1,
             this.columnHeader2});
             this.enrollPlayerListView.GridLines = true;
-            this.enrollPlayerListView.Location = new System.Drawing.Point(39, 80);
+            this.enrollPlayerListView.Location = new System.Drawing.Point(40, 71);
             this.enrollPlayerListView.Name = "enrollPlayerListView";
-            this.enrollPlayerListView.Size = new System.Drawing.Size(247, 310);
+            this.enrollPlayerListView.Size = new System.Drawing.Size(313, 465);
             this.enrollPlayerListView.TabIndex = 2;
             this.enrollPlayerListView.UseCompatibleStateImageBehavior = false;
             this.enrollPlayerListView.View = System.Windows.Forms.View.Details;
@@ -264,7 +265,7 @@
             // teamEnrolLabel
             // 
             this.teamEnrolLabel.AutoSize = true;
-            this.teamEnrolLabel.Location = new System.Drawing.Point(347, 29);
+            this.teamEnrolLabel.Location = new System.Drawing.Point(799, 34);
             this.teamEnrolLabel.Name = "teamEnrolLabel";
             this.teamEnrolLabel.Size = new System.Drawing.Size(44, 17);
             this.teamEnrolLabel.TabIndex = 1;
@@ -273,7 +274,7 @@
             // playerEnrolLabel
             // 
             this.playerEnrolLabel.AutoSize = true;
-            this.playerEnrolLabel.Location = new System.Drawing.Point(65, 29);
+            this.playerEnrolLabel.Location = new System.Drawing.Point(37, 34);
             this.playerEnrolLabel.Name = "playerEnrolLabel";
             this.playerEnrolLabel.Size = new System.Drawing.Size(48, 17);
             this.playerEnrolLabel.TabIndex = 0;
@@ -281,19 +282,20 @@
             // 
             // tabDisplayTeam
             // 
+            this.tabDisplayTeam.Controls.Add(this.listView1);
             this.tabDisplayTeam.Controls.Add(this.gotoAddTeamButton);
             this.tabDisplayTeam.Controls.Add(this.teamListView);
             this.tabDisplayTeam.Location = new System.Drawing.Point(4, 25);
             this.tabDisplayTeam.Name = "tabDisplayTeam";
             this.tabDisplayTeam.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDisplayTeam.Size = new System.Drawing.Size(855, 414);
+            this.tabDisplayTeam.Size = new System.Drawing.Size(1255, 590);
             this.tabDisplayTeam.TabIndex = 3;
             this.tabDisplayTeam.Text = "Team";
             this.tabDisplayTeam.UseVisualStyleBackColor = true;
             // 
             // gotoAddTeamButton
             // 
-            this.gotoAddTeamButton.Location = new System.Drawing.Point(53, 6);
+            this.gotoAddTeamButton.Location = new System.Drawing.Point(43, 20);
             this.gotoAddTeamButton.Name = "gotoAddTeamButton";
             this.gotoAddTeamButton.Size = new System.Drawing.Size(94, 33);
             this.gotoAddTeamButton.TabIndex = 1;
@@ -311,9 +313,9 @@
             this.columnRegion,
             this.columnPlayers});
             this.teamListView.GridLines = true;
-            this.teamListView.Location = new System.Drawing.Point(53, 59);
+            this.teamListView.Location = new System.Drawing.Point(43, 59);
             this.teamListView.Name = "teamListView";
-            this.teamListView.Size = new System.Drawing.Size(754, 337);
+            this.teamListView.Size = new System.Drawing.Size(497, 481);
             this.teamListView.TabIndex = 0;
             this.teamListView.UseCompatibleStateImageBehavior = false;
             this.teamListView.View = System.Windows.Forms.View.Details;
@@ -352,7 +354,7 @@
             this.tabDisplayPlayers.Location = new System.Drawing.Point(4, 25);
             this.tabDisplayPlayers.Name = "tabDisplayPlayers";
             this.tabDisplayPlayers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDisplayPlayers.Size = new System.Drawing.Size(855, 414);
+            this.tabDisplayPlayers.Size = new System.Drawing.Size(1255, 590);
             this.tabDisplayPlayers.TabIndex = 1;
             this.tabDisplayPlayers.Text = "Players";
             this.tabDisplayPlayers.UseVisualStyleBackColor = true;
@@ -378,9 +380,9 @@
             this.columnBirthPlace,
             this.columnTeam});
             this.playerListView.GridLines = true;
-            this.playerListView.Location = new System.Drawing.Point(32, 55);
+            this.playerListView.Location = new System.Drawing.Point(15, 72);
             this.playerListView.Name = "playerListView";
-            this.playerListView.Size = new System.Drawing.Size(765, 318);
+            this.playerListView.Size = new System.Drawing.Size(731, 498);
             this.playerListView.TabIndex = 0;
             this.playerListView.UseCompatibleStateImageBehavior = false;
             this.playerListView.View = System.Windows.Forms.View.Details;
@@ -427,7 +429,7 @@
             this.rugbyManagementTab.Location = new System.Drawing.Point(12, 42);
             this.rugbyManagementTab.Name = "rugbyManagementTab";
             this.rugbyManagementTab.SelectedIndex = 0;
-            this.rugbyManagementTab.Size = new System.Drawing.Size(863, 443);
+            this.rugbyManagementTab.Size = new System.Drawing.Size(1263, 619);
             this.rugbyManagementTab.TabIndex = 1;
             // 
             // SearchTab
@@ -441,7 +443,7 @@
             this.SearchTab.Location = new System.Drawing.Point(4, 25);
             this.SearchTab.Name = "SearchTab";
             this.SearchTab.Padding = new System.Windows.Forms.Padding(3);
-            this.SearchTab.Size = new System.Drawing.Size(855, 414);
+            this.SearchTab.Size = new System.Drawing.Size(1255, 590);
             this.SearchTab.TabIndex = 5;
             this.SearchTab.Text = "Search";
             this.SearchTab.UseVisualStyleBackColor = true;
@@ -467,9 +469,9 @@
             this.columnBirthPlaceSearch,
             this.columnTeamSearch});
             this.searchListView.GridLines = true;
-            this.searchListView.Location = new System.Drawing.Point(29, 95);
+            this.searchListView.Location = new System.Drawing.Point(29, 108);
             this.searchListView.Name = "searchListView";
-            this.searchListView.Size = new System.Drawing.Size(783, 295);
+            this.searchListView.Size = new System.Drawing.Size(1134, 454);
             this.searchListView.TabIndex = 0;
             this.searchListView.UseCompatibleStateImageBehavior = false;
             this.searchListView.View = System.Windows.Forms.View.Details;
@@ -556,11 +558,20 @@
             this.searchByLabel.TabIndex = 5;
             this.searchByLabel.Text = "Search By:";
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(693, 59);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(531, 481);
+            this.listView1.TabIndex = 2;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 518);
+            this.ClientSize = new System.Drawing.Size(1287, 673);
             this.Controls.Add(this.rugbyManagementTab);
             this.Controls.Add(this.menuStrip);
             this.MainMenuStrip = this.menuStrip;
@@ -639,6 +650,7 @@
         private System.Windows.Forms.ColumnHeader columnWeightSearch;
         private System.Windows.Forms.ColumnHeader columnBirthPlaceSearch;
         private System.Windows.Forms.ColumnHeader columnTeamSearch;
+        private System.Windows.Forms.ListView listView1;
     }
 }
 

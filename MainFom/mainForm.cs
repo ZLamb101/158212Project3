@@ -36,10 +36,7 @@ namespace MainForm {
                 string line;
                 while (reader.Peek() >= 0) {
                     line = reader.ReadLine();
-                    Console.WriteLine(line);
                     listTeam.Add(stringToTeam(line));
-
-
                 }
                 reader.Close();
             }
@@ -74,7 +71,6 @@ namespace MainForm {
                 string line;
                 while (reader.Peek() >= 0) {
                     line = reader.ReadLine();
-                    Console.WriteLine(line);
                     listPlayer.Add(stringToPlayer(line));
 
                 }
@@ -86,17 +82,12 @@ namespace MainForm {
         public Player stringToPlayer(string line) {
             List<string> words = new List<string>(line.Split(';'));
             Player tempPlayer;
-            switch (words.Count) {
-                case 6:
-                    tempPlayer = new Player(words[0], words[1], Convert.ToDateTime(words[2]), Convert.ToInt32(words[3]), Convert.ToInt32(words[4]), words[5]);
-                    break;
-                default:
-                    tempPlayer = new Player(words[0], words[1], Convert.ToDateTime(words[2]), Convert.ToInt32(words[3]), Convert.ToInt32(words[4]), words[5], words[6]);
-                    break;
-            }
-
-            updatePlayerListView(tempPlayer);
-           
+            if(words.Count == 6) {
+                tempPlayer = new Player(words[0], words[1], Convert.ToDateTime(words[2]), Convert.ToInt32(words[3]), Convert.ToInt32(words[4]), words[5]);
+            } else {
+                tempPlayer = new Player(words[0], words[1], Convert.ToDateTime(words[2]), Convert.ToInt32(words[3]), Convert.ToInt32(words[4]), words[5], words[6]);
+            }        
+            updatePlayerListView(tempPlayer);           
             return tempPlayer;
         }
 
@@ -253,27 +244,37 @@ namespace MainForm {
         }
 
         private void searchButton_Click(object sender, EventArgs e) {
+            searchListView.Items.Clear();
             if(searchTextBox.Text != "") {
                 
                 if(ageRadioButton.Checked) {
                     int searchAge = Convert.ToInt32(searchTextBox.Text);
 
-                    IEnumerable<Player> playerListQuery =
+                    IEnumerable<Player> playerAgeListQuery =
                         from i in listPlayer
-                        where i.BirthDate.Year == DateTime.Now.Year - searchAge
+                        where i.getAge() == searchAge
+                        //where i.BirthDate.Year == DateTime.Now.Year - searchAge
                         select i;
 
+                    foreach (Player x in playerAgeListQuery) {
+                        ListViewItem newSearchItem = new ListViewItem(new[] { x.ID, x.Name, Convert.ToString(x.BirthDate), Convert.ToString(x.Height), Convert.ToString(x.Weight), x.BirthPlace, x.TeamName });
+                        searchListView.Items.Add(newSearchItem);
+                    }
 
                 } else {
                     string searchLocation = searchTextBox.Text;
 
-                    IEnumerable<Player> playerListQuery =
+                    IEnumerable<Player> playerBPListQuery =
                         from i in listPlayer
-                        where i.BirthPlace == searchLocation
+                        where i.BirthPlace == searchLocation || i.BirthPlace == searchLocation + ", New Zealand"
                         select i;
 
-                    ListViewItem newSearchItem = new ListViewItem(new[] { "hello" });
-                    searchListView.Items.Add(newSearchItem);
+                    foreach (Player x in playerBPListQuery) {
+                        ListViewItem newSearchItem = new ListViewItem(new[] { x.ID, x.Name, Convert.ToString( x.BirthDate),Convert.ToString(x.Height), Convert.ToString(x.Weight), x.BirthPlace, x.TeamName});                      
+                        searchListView.Items.Add(newSearchItem);
+                    }
+                   
+                
 
                    //playerListQuery.
                 }

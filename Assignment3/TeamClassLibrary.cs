@@ -153,6 +153,18 @@ namespace Assignment3 {
         }
 
 
+        public int getAge() {
+
+            // Save today's date.
+            DateTime today = DateTime.Today;
+            // Calculate the age.
+            int age = today.Year - mBirthDate.Year;
+                
+            // Go back to the year the person was born in case of a leap year
+            if (mBirthDate > today.AddYears(-age)) age--;
+            return age;
+        }
+
     }
 
 
