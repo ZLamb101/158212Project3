@@ -17,7 +17,7 @@ namespace AddNewPlayerForm {
             mform = _form;
         }
 
-        public mainForm mform;
+        private mainForm mform;
 
         private void Form1_Load(object sender, EventArgs e) {
 

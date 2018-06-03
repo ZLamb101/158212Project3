@@ -14,6 +14,16 @@ namespace Assignment3 {
             mCoach = _Coach;
             mYearFounded = _YearFounded;
             mRegion = _Region;
+            mPlayers = new List<string>();
+        }
+
+        public Team(string _Name, string _Ground, string _Coach, int _YearFounded, string _Region, List<string> _playerList) {
+            mName = _Name;
+            mGround = _Ground;
+            mCoach = _Coach;
+            mYearFounded = _YearFounded;
+            mRegion = _Region;
+            mPlayers = _playerList;
         }
 
         private string mName;
@@ -55,7 +65,7 @@ namespace Assignment3 {
         
         public string saveString() {
             string teamString;
-            teamString = mName + ";" + mGround + ";" + mCoach + ";" + mYearFounded + ";" + mRegion + ';' + mPlayers.Count;
+            teamString = mName + ";" + mGround + ";" + mCoach + ";" + mYearFounded + ";" + mRegion;
             for (int i = 0; i< mPlayers.Count; i++) {
                 teamString = teamString + ";" + mPlayers[i];
             }

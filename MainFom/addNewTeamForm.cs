@@ -17,7 +17,7 @@ namespace AddNewTeamForm {
             InitializeComponent();
             mform = _form;
         }
-        mainForm mform;
+        private mainForm mform;
 
         private void addTeamButton_Click(object sender, EventArgs e) {
             Team tempTeam = new Team(addTeamNameTextBox.Text, addTeamGroundTextBox.Text,

@@ -23,15 +23,15 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.teamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.teamsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.playersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.teamsToolLoadItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playersToolLoadItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveTool = new System.Windows.Forms.ToolStripMenuItem();
+            this.teamsToolSaveItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playersToolSaveItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileDialogue = new System.Windows.Forms.OpenFileDialog();
             this.enrollmentPage = new System.Windows.Forms.TabPage();
             this.teamSelectedEnrollmentLabel = new System.Windows.Forms.Label();
             this.playerSelectedEnrollmentLabel = new System.Windows.Forms.Label();
@@ -65,83 +65,98 @@
             this.columnBirthPlace = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnTeam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rugbyManagementTab = new System.Windows.Forms.TabControl();
-            this.menuStrip1.SuspendLayout();
+            this.SearchTab = new System.Windows.Forms.TabPage();
+            this.chartTab = new System.Windows.Forms.TabPage();
+            this.searchListView = new System.Windows.Forms.ListView();
+            this.placeOfBirthRadioButton = new System.Windows.Forms.RadioButton();
+            this.ageRadioButton = new System.Windows.Forms.RadioButton();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.columnIDSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnNameSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnDOBSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeightSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnWeightSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnBirthPlaceSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnTeamSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.searchByLabel = new System.Windows.Forms.Label();
+            this.menuStrip.SuspendLayout();
             this.enrollmentPage.SuspendLayout();
             this.tabDisplayTeam.SuspendLayout();
             this.tabDisplayPlayers.SuspendLayout();
             this.rugbyManagementTab.SuspendLayout();
+            this.SearchTab.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(907, 28);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(907, 28);
+            this.menuStrip.TabIndex = 0;
+            this.menuStrip.Text = "menuStrip";
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem,
-            this.loadToolStripMenuItem});
+            this.openTool,
+            this.saveTool});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // openToolStripMenuItem
+            // openTool
             // 
-            this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.teamsToolStripMenuItem,
-            this.playersToolStripMenuItem});
-            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
-            this.openToolStripMenuItem.Text = "Open";
+            this.openTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.teamsToolLoadItem,
+            this.playersToolLoadItem});
+            this.openTool.Name = "openTool";
+            this.openTool.Size = new System.Drawing.Size(216, 26);
+            this.openTool.Text = "Open";
             // 
-            // teamsToolStripMenuItem
+            // teamsToolLoadItem
             // 
-            this.teamsToolStripMenuItem.Name = "teamsToolStripMenuItem";
-            this.teamsToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
-            this.teamsToolStripMenuItem.Text = "Teams";
-            this.teamsToolStripMenuItem.Click += new System.EventHandler(this.teamsToolStripMenuItem_Click);
+            this.teamsToolLoadItem.Name = "teamsToolLoadItem";
+            this.teamsToolLoadItem.Size = new System.Drawing.Size(216, 26);
+            this.teamsToolLoadItem.Text = "Teams";
+            this.teamsToolLoadItem.Click += new System.EventHandler(this.teamsToolLoad_Click);
             // 
-            // playersToolStripMenuItem
+            // playersToolLoadItem
             // 
-            this.playersToolStripMenuItem.Name = "playersToolStripMenuItem";
-            this.playersToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
-            this.playersToolStripMenuItem.Text = "Players";
-            this.playersToolStripMenuItem.Click += new System.EventHandler(this.playersToolStripMenuItem_Click);
+            this.playersToolLoadItem.Name = "playersToolLoadItem";
+            this.playersToolLoadItem.Size = new System.Drawing.Size(216, 26);
+            this.playersToolLoadItem.Text = "Players";
+            this.playersToolLoadItem.Click += new System.EventHandler(this.playersToolLoad_Click);
             // 
-            // loadToolStripMenuItem
+            // saveTool
             // 
-            this.loadToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.teamsToolStripMenuItem1,
-            this.playersToolStripMenuItem1});
-            this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
-            this.loadToolStripMenuItem.Text = "Save";
+            this.saveTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.teamsToolSaveItem,
+            this.playersToolSaveItem});
+            this.saveTool.Name = "saveTool";
+            this.saveTool.Size = new System.Drawing.Size(216, 26);
+            this.saveTool.Text = "Save";
             // 
-            // teamsToolStripMenuItem1
+            // teamsToolSaveItem
             // 
-            this.teamsToolStripMenuItem1.Name = "teamsToolStripMenuItem1";
-            this.teamsToolStripMenuItem1.Size = new System.Drawing.Size(130, 26);
-            this.teamsToolStripMenuItem1.Text = "Teams";
-            this.teamsToolStripMenuItem1.Click += new System.EventHandler(this.teamsToolStripMenuItem1_Click);
+            this.teamsToolSaveItem.Name = "teamsToolSaveItem";
+            this.teamsToolSaveItem.Size = new System.Drawing.Size(216, 26);
+            this.teamsToolSaveItem.Text = "Teams";
+            this.teamsToolSaveItem.Click += new System.EventHandler(this.teamsToolSave_Click);
             // 
-            // playersToolStripMenuItem1
+            // playersToolSaveItem
             // 
-            this.playersToolStripMenuItem1.Name = "playersToolStripMenuItem1";
-            this.playersToolStripMenuItem1.Size = new System.Drawing.Size(130, 26);
-            this.playersToolStripMenuItem1.Text = "Players";
-            this.playersToolStripMenuItem1.Click += new System.EventHandler(this.playersToolStripMenuItem1_Click);
+            this.playersToolSaveItem.Name = "playersToolSaveItem";
+            this.playersToolSaveItem.Size = new System.Drawing.Size(216, 26);
+            this.playersToolSaveItem.Text = "Players";
+            this.playersToolSaveItem.Click += new System.EventHandler(this.playersToolSave_Click);
             // 
-            // openFileDialog1
+            // openFileDialogue
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            this.openFileDialogue.FileName = "openFileDialogue";
             // 
             // enrollmentPage
             // 
@@ -208,6 +223,7 @@
             // 
             this.enrollTeamListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.teamEnrollmentHeader});
+            this.enrollTeamListView.GridLines = true;
             this.enrollTeamListView.Location = new System.Drawing.Point(338, 80);
             this.enrollTeamListView.Name = "enrollTeamListView";
             this.enrollTeamListView.Size = new System.Drawing.Size(179, 317);
@@ -226,6 +242,7 @@
             this.enrollPlayerListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
+            this.enrollPlayerListView.GridLines = true;
             this.enrollPlayerListView.Location = new System.Drawing.Point(39, 80);
             this.enrollPlayerListView.Name = "enrollPlayerListView";
             this.enrollPlayerListView.Size = new System.Drawing.Size(247, 310);
@@ -242,7 +259,7 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Team ";
-            this.columnHeader2.Width = 85;
+            this.columnHeader2.Width = 131;
             // 
             // teamEnrolLabel
             // 
@@ -321,10 +338,12 @@
             // columnRegion
             // 
             this.columnRegion.Text = "Region";
+            this.columnRegion.Width = 86;
             // 
             // columnPlayers
             // 
             this.columnPlayers.Text = "Players";
+            this.columnPlayers.Width = 298;
             // 
             // tabDisplayPlayers
             // 
@@ -396,17 +415,146 @@
             // columnTeam
             // 
             this.columnTeam.Text = "Team";
+            this.columnTeam.Width = 147;
             // 
             // rugbyManagementTab
             // 
             this.rugbyManagementTab.Controls.Add(this.tabDisplayPlayers);
             this.rugbyManagementTab.Controls.Add(this.tabDisplayTeam);
             this.rugbyManagementTab.Controls.Add(this.enrollmentPage);
-            this.rugbyManagementTab.Location = new System.Drawing.Point(13, 42);
+            this.rugbyManagementTab.Controls.Add(this.SearchTab);
+            this.rugbyManagementTab.Controls.Add(this.chartTab);
+            this.rugbyManagementTab.Location = new System.Drawing.Point(12, 42);
             this.rugbyManagementTab.Name = "rugbyManagementTab";
             this.rugbyManagementTab.SelectedIndex = 0;
             this.rugbyManagementTab.Size = new System.Drawing.Size(863, 443);
             this.rugbyManagementTab.TabIndex = 1;
+            // 
+            // SearchTab
+            // 
+            this.SearchTab.Controls.Add(this.searchByLabel);
+            this.SearchTab.Controls.Add(this.searchButton);
+            this.SearchTab.Controls.Add(this.searchTextBox);
+            this.SearchTab.Controls.Add(this.ageRadioButton);
+            this.SearchTab.Controls.Add(this.placeOfBirthRadioButton);
+            this.SearchTab.Controls.Add(this.searchListView);
+            this.SearchTab.Location = new System.Drawing.Point(4, 25);
+            this.SearchTab.Name = "SearchTab";
+            this.SearchTab.Padding = new System.Windows.Forms.Padding(3);
+            this.SearchTab.Size = new System.Drawing.Size(855, 414);
+            this.SearchTab.TabIndex = 5;
+            this.SearchTab.Text = "Search";
+            this.SearchTab.UseVisualStyleBackColor = true;
+            // 
+            // chartTab
+            // 
+            this.chartTab.Location = new System.Drawing.Point(4, 25);
+            this.chartTab.Name = "chartTab";
+            this.chartTab.Padding = new System.Windows.Forms.Padding(3);
+            this.chartTab.Size = new System.Drawing.Size(855, 414);
+            this.chartTab.TabIndex = 6;
+            this.chartTab.Text = "Chart";
+            this.chartTab.UseVisualStyleBackColor = true;
+            // 
+            // searchListView
+            // 
+            this.searchListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnIDSearch,
+            this.columnNameSearch,
+            this.columnDOBSearch,
+            this.columnHeightSearch,
+            this.columnWeightSearch,
+            this.columnBirthPlaceSearch,
+            this.columnTeamSearch});
+            this.searchListView.GridLines = true;
+            this.searchListView.Location = new System.Drawing.Point(29, 95);
+            this.searchListView.Name = "searchListView";
+            this.searchListView.Size = new System.Drawing.Size(783, 295);
+            this.searchListView.TabIndex = 0;
+            this.searchListView.UseCompatibleStateImageBehavior = false;
+            this.searchListView.View = System.Windows.Forms.View.Details;
+            // 
+            // placeOfBirthRadioButton
+            // 
+            this.placeOfBirthRadioButton.AutoSize = true;
+            this.placeOfBirthRadioButton.Location = new System.Drawing.Point(29, 68);
+            this.placeOfBirthRadioButton.Name = "placeOfBirthRadioButton";
+            this.placeOfBirthRadioButton.Size = new System.Drawing.Size(113, 21);
+            this.placeOfBirthRadioButton.TabIndex = 1;
+            this.placeOfBirthRadioButton.Text = "Place of Birth";
+            this.placeOfBirthRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // ageRadioButton
+            // 
+            this.ageRadioButton.AutoSize = true;
+            this.ageRadioButton.Checked = true;
+            this.ageRadioButton.Location = new System.Drawing.Point(29, 41);
+            this.ageRadioButton.Name = "ageRadioButton";
+            this.ageRadioButton.Size = new System.Drawing.Size(54, 21);
+            this.ageRadioButton.TabIndex = 2;
+            this.ageRadioButton.TabStop = true;
+            this.ageRadioButton.Text = "Age";
+            this.ageRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Location = new System.Drawing.Point(187, 51);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(365, 22);
+            this.searchTextBox.TabIndex = 3;
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(592, 47);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(121, 31);
+            this.searchButton.TabIndex = 4;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // columnIDSearch
+            // 
+            this.columnIDSearch.Text = "ID";
+            // 
+            // columnNameSearch
+            // 
+            this.columnNameSearch.Text = "Name";
+            this.columnNameSearch.Width = 140;
+            // 
+            // columnDOBSearch
+            // 
+            this.columnDOBSearch.Text = "Date Of Birth";
+            this.columnDOBSearch.Width = 114;
+            // 
+            // columnHeightSearch
+            // 
+            this.columnHeightSearch.Text = "Height";
+            this.columnHeightSearch.Width = 70;
+            // 
+            // columnWeightSearch
+            // 
+            this.columnWeightSearch.Text = "Weight";
+            this.columnWeightSearch.Width = 68;
+            // 
+            // columnBirthPlaceSearch
+            // 
+            this.columnBirthPlaceSearch.Text = "Place of Birth";
+            this.columnBirthPlaceSearch.Width = 140;
+            // 
+            // columnTeamSearch
+            // 
+            this.columnTeamSearch.Text = "Team";
+            this.columnTeamSearch.Width = 184;
+            // 
+            // searchByLabel
+            // 
+            this.searchByLabel.AutoSize = true;
+            this.searchByLabel.Location = new System.Drawing.Point(29, 18);
+            this.searchByLabel.Name = "searchByLabel";
+            this.searchByLabel.Size = new System.Drawing.Size(77, 17);
+            this.searchByLabel.TabIndex = 5;
+            this.searchByLabel.Text = "Search By:";
             // 
             // mainForm
             // 
@@ -414,17 +562,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 518);
             this.Controls.Add(this.rugbyManagementTab);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.menuStrip);
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "mainForm";
             this.Text = "Rugby_Organiser";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.enrollmentPage.ResumeLayout(false);
             this.enrollmentPage.PerformLayout();
             this.tabDisplayTeam.ResumeLayout(false);
             this.tabDisplayPlayers.ResumeLayout(false);
             this.rugbyManagementTab.ResumeLayout(false);
+            this.SearchTab.ResumeLayout(false);
+            this.SearchTab.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,15 +582,15 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem teamsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem playersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem teamsToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem playersToolStripMenuItem1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ToolStripMenuItem openTool;
+        private System.Windows.Forms.ToolStripMenuItem teamsToolLoadItem;
+        private System.Windows.Forms.ToolStripMenuItem playersToolLoadItem;
+        private System.Windows.Forms.ToolStripMenuItem saveTool;
+        private System.Windows.Forms.ToolStripMenuItem teamsToolSaveItem;
+        private System.Windows.Forms.ToolStripMenuItem playersToolSaveItem;
+        private System.Windows.Forms.OpenFileDialog openFileDialogue;
         private System.Windows.Forms.TabPage enrollmentPage;
         private System.Windows.Forms.Label teamSelectedEnrollmentLabel;
         private System.Windows.Forms.Label playerSelectedEnrollmentLabel;
@@ -474,6 +624,21 @@
         private System.Windows.Forms.ColumnHeader columnTeam;
         private System.Windows.Forms.TabControl rugbyManagementTab;
         private System.Windows.Forms.Button gotoAddTeamButton;
+        private System.Windows.Forms.TabPage SearchTab;
+        private System.Windows.Forms.TabPage chartTab;
+        private System.Windows.Forms.Label searchByLabel;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.TextBox searchTextBox;
+        private System.Windows.Forms.RadioButton ageRadioButton;
+        private System.Windows.Forms.RadioButton placeOfBirthRadioButton;
+        private System.Windows.Forms.ListView searchListView;
+        private System.Windows.Forms.ColumnHeader columnIDSearch;
+        private System.Windows.Forms.ColumnHeader columnNameSearch;
+        private System.Windows.Forms.ColumnHeader columnDOBSearch;
+        private System.Windows.Forms.ColumnHeader columnHeightSearch;
+        private System.Windows.Forms.ColumnHeader columnWeightSearch;
+        private System.Windows.Forms.ColumnHeader columnBirthPlaceSearch;
+        private System.Windows.Forms.ColumnHeader columnTeamSearch;
     }
 }
 
