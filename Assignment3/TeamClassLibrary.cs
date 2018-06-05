@@ -17,14 +17,7 @@ namespace Assignment3 {
             mPlayers = new List<string>();
         }
 
-        public Team(string _Name, string _Ground, string _Coach, int _YearFounded, string _Region, List<string> _playerList) {
-            mName = _Name;
-            mGround = _Ground;
-            mCoach = _Coach;
-            mYearFounded = _YearFounded;
-            mRegion = _Region;
-            mPlayers = _playerList;
-        }
+       
 
         private string mName;
         public string Name{
@@ -65,11 +58,8 @@ namespace Assignment3 {
         
         public string saveString() {
             string teamString;
-            teamString = mName + ";" + mGround + ";" + mCoach + ";" + mYearFounded + ";" + mRegion;
-           
+            teamString = mName + ";" + mGround + ";" + mCoach + ";" + mYearFounded + ";" + mRegion;          
             return teamString;
-
-
         }
     }
 
@@ -143,8 +133,6 @@ namespace Assignment3 {
             if (mTeamName != "") {
                 playerString = playerString + ";" + mTeamName;
             }
-
-
             return playerString;
 
         }
@@ -165,7 +153,7 @@ namespace Assignment3 {
     }
 
 
-
+    // idk?
     public class RugbyUnion {
 
         public RugbyUnion() { }

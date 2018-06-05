@@ -244,7 +244,6 @@
             this.Controls.Add(this.addPlayerButton);
             this.Name = "addNewPlayerForm";
             this.Text = "Add Player";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

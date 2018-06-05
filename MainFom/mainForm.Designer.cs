@@ -26,10 +26,12 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openTool = new System.Windows.Forms.ToolStripMenuItem();
@@ -104,7 +106,7 @@
             this.columnBirthPlaceSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnTeamSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chartTab = new System.Windows.Forms.TabPage();
-            this.AgeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.ageChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.ageHistogramButton = new System.Windows.Forms.RadioButton();
             this.HeightvsWeightButton = new System.Windows.Forms.RadioButton();
             this.HeightvsWeightChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -115,7 +117,7 @@
             this.rugbyManagementTab.SuspendLayout();
             this.SearchTab.SuspendLayout();
             this.chartTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AgeChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeightvsWeightChart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -730,7 +732,7 @@
             // 
             // chartTab
             // 
-            this.chartTab.Controls.Add(this.AgeChart);
+            this.chartTab.Controls.Add(this.ageChart);
             this.chartTab.Controls.Add(this.ageHistogramButton);
             this.chartTab.Controls.Add(this.HeightvsWeightButton);
             this.chartTab.Controls.Add(this.HeightvsWeightChart);
@@ -742,21 +744,32 @@
             this.chartTab.Text = "Chart";
             this.chartTab.UseVisualStyleBackColor = true;
             // 
-            // AgeChart
+            // ageChart
             // 
+            chartArea1.AxisX.Title = "Age Range(Years)";
+            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea1.AxisY.Interval = 1D;
+            chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.AxisY.Title = "Count";
+            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea1.Name = "ChartArea1";
-            this.AgeChart.ChartAreas.Add(chartArea1);
+            this.ageChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.AgeChart.Legends.Add(legend1);
-            this.AgeChart.Location = new System.Drawing.Point(88, 45);
-            this.AgeChart.Name = "AgeChart";
+            this.ageChart.Legends.Add(legend1);
+            this.ageChart.Location = new System.Drawing.Point(71, 72);
+            this.ageChart.Name = "ageChart";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Age";
-            this.AgeChart.Series.Add(series1);
-            this.AgeChart.Size = new System.Drawing.Size(348, 370);
-            this.AgeChart.TabIndex = 3;
-            this.AgeChart.Text = "Age Histogram";
+            this.ageChart.Series.Add(series1);
+            this.ageChart.Size = new System.Drawing.Size(1068, 488);
+            this.ageChart.TabIndex = 3;
+            this.ageChart.Text = "Age Histogram";
+            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title1.Name = "Title1";
+            title1.Text = "Histogram of Players Ages";
+            this.ageChart.Titles.Add(title1);
+            this.ageChart.Visible = false;
             // 
             // ageHistogramButton
             // 
@@ -765,13 +778,14 @@
             this.ageHistogramButton.Name = "ageHistogramButton";
             this.ageHistogramButton.Size = new System.Drawing.Size(54, 21);
             this.ageHistogramButton.TabIndex = 2;
-            this.ageHistogramButton.TabStop = true;
             this.ageHistogramButton.Text = "Age";
             this.ageHistogramButton.UseVisualStyleBackColor = true;
+            this.ageHistogramButton.CheckedChanged += new System.EventHandler(this.ageHistogramButton_CheckedChanged);
             // 
             // HeightvsWeightButton
             // 
             this.HeightvsWeightButton.AutoSize = true;
+            this.HeightvsWeightButton.Checked = true;
             this.HeightvsWeightButton.Location = new System.Drawing.Point(61, 18);
             this.HeightvsWeightButton.Name = "HeightvsWeightButton";
             this.HeightvsWeightButton.Size = new System.Drawing.Size(136, 21);
@@ -779,14 +793,19 @@
             this.HeightvsWeightButton.TabStop = true;
             this.HeightvsWeightButton.Text = "Height vs Weight";
             this.HeightvsWeightButton.UseVisualStyleBackColor = true;
+            this.HeightvsWeightButton.CheckedChanged += new System.EventHandler(this.HeightvsWeightButton_CheckedChanged);
             // 
             // HeightvsWeightChart
             // 
+            chartArea2.AxisX.Title = "Players";
+            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea2.AxisY.Title = "Value(cm/kg)";
+            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea2.Name = "ChartArea1";
             this.HeightvsWeightChart.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.HeightvsWeightChart.Legends.Add(legend2);
-            this.HeightvsWeightChart.Location = new System.Drawing.Point(442, 122);
+            this.HeightvsWeightChart.Location = new System.Drawing.Point(96, 72);
             this.HeightvsWeightChart.Name = "HeightvsWeightChart";
             series2.ChartArea = "ChartArea1";
             series2.Legend = "Legend1";
@@ -796,9 +815,13 @@
             series3.Name = "Weight";
             this.HeightvsWeightChart.Series.Add(series2);
             this.HeightvsWeightChart.Series.Add(series3);
-            this.HeightvsWeightChart.Size = new System.Drawing.Size(669, 358);
+            this.HeightvsWeightChart.Size = new System.Drawing.Size(1079, 488);
             this.HeightvsWeightChart.TabIndex = 0;
             this.HeightvsWeightChart.Text = "HeightvsWeightChart";
+            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title2.Name = "HeightWeightChartTitle";
+            title2.Text = "Height and Weight of Players";
+            this.HeightvsWeightChart.Titles.Add(title2);
             // 
             // mainForm
             // 
@@ -822,7 +845,7 @@
             this.SearchTab.PerformLayout();
             this.chartTab.ResumeLayout(false);
             this.chartTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AgeChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ageChart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeightvsWeightChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -906,7 +929,7 @@
         private System.Windows.Forms.Label playerTeamNameLabel;
         private System.Windows.Forms.Label playerTeamDetailsLabel;
         private System.Windows.Forms.DataVisualization.Charting.Chart HeightvsWeightChart;
-        private System.Windows.Forms.DataVisualization.Charting.Chart AgeChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart ageChart;
         private System.Windows.Forms.RadioButton ageHistogramButton;
         private System.Windows.Forms.RadioButton HeightvsWeightButton;
     }
