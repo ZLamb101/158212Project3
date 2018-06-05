@@ -23,6 +23,13 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openTool = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +53,13 @@
             this.teamEnrolLabel = new System.Windows.Forms.Label();
             this.playerEnrolLabel = new System.Windows.Forms.Label();
             this.tabDisplayTeam = new System.Windows.Forms.TabPage();
+            this.teamPlayersListView = new System.Windows.Forms.ListView();
+            this.columnTeamPlayerID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnTeamPlayerName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnTeamPlayerDOB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnTeamPlayerHeight = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnTeamPlayerWeight = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnTeamPlayerBirthPlace = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gotoAddTeamButton = new System.Windows.Forms.Button();
             this.teamListView = new System.Windows.Forms.ListView();
             this.columnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -53,8 +67,18 @@
             this.columnCoach = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnFoundedYear = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnRegion = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnPlayers = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabDisplayPlayers = new System.Windows.Forms.TabPage();
+            this.playerTeamRegionTextBox = new System.Windows.Forms.TextBox();
+            this.playerTeamYearFoundedTextBox = new System.Windows.Forms.TextBox();
+            this.playerTeamCoachTextBox = new System.Windows.Forms.TextBox();
+            this.playerTeamGroundTextBox = new System.Windows.Forms.TextBox();
+            this.playerTeamNameTextBox = new System.Windows.Forms.TextBox();
+            this.playerTeamRegionLabel = new System.Windows.Forms.Label();
+            this.playerTeamYearFoundedLabel = new System.Windows.Forms.Label();
+            this.playerTeamCoachLabel = new System.Windows.Forms.Label();
+            this.playerTeamGroundLabel = new System.Windows.Forms.Label();
+            this.playerTeamNameLabel = new System.Windows.Forms.Label();
+            this.playerTeamDetailsLabel = new System.Windows.Forms.Label();
             this.gotoAddPlayerButton = new System.Windows.Forms.Button();
             this.playerListView = new System.Windows.Forms.ListView();
             this.columnID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -66,12 +90,12 @@
             this.columnTeam = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.rugbyManagementTab = new System.Windows.Forms.TabControl();
             this.SearchTab = new System.Windows.Forms.TabPage();
-            this.chartTab = new System.Windows.Forms.TabPage();
-            this.searchListView = new System.Windows.Forms.ListView();
-            this.placeOfBirthRadioButton = new System.Windows.Forms.RadioButton();
-            this.ageRadioButton = new System.Windows.Forms.RadioButton();
-            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.searchByLabel = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
+            this.searchTextBox = new System.Windows.Forms.TextBox();
+            this.ageRadioButton = new System.Windows.Forms.RadioButton();
+            this.placeOfBirthRadioButton = new System.Windows.Forms.RadioButton();
+            this.searchListView = new System.Windows.Forms.ListView();
             this.columnIDSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnNameSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnDOBSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -79,14 +103,20 @@
             this.columnWeightSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnBirthPlaceSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnTeamSearch = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.searchByLabel = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.chartTab = new System.Windows.Forms.TabPage();
+            this.AgeChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.ageHistogramButton = new System.Windows.Forms.RadioButton();
+            this.HeightvsWeightButton = new System.Windows.Forms.RadioButton();
+            this.HeightvsWeightChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip.SuspendLayout();
             this.enrollmentPage.SuspendLayout();
             this.tabDisplayTeam.SuspendLayout();
             this.tabDisplayPlayers.SuspendLayout();
             this.rugbyManagementTab.SuspendLayout();
             this.SearchTab.SuspendLayout();
+            this.chartTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AgeChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeightvsWeightChart)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -115,20 +145,20 @@
             this.teamsToolLoadItem,
             this.playersToolLoadItem});
             this.openTool.Name = "openTool";
-            this.openTool.Size = new System.Drawing.Size(216, 26);
+            this.openTool.Size = new System.Drawing.Size(117, 26);
             this.openTool.Text = "Load";
             // 
             // teamsToolLoadItem
             // 
             this.teamsToolLoadItem.Name = "teamsToolLoadItem";
-            this.teamsToolLoadItem.Size = new System.Drawing.Size(216, 26);
+            this.teamsToolLoadItem.Size = new System.Drawing.Size(130, 26);
             this.teamsToolLoadItem.Text = "Teams";
             this.teamsToolLoadItem.Click += new System.EventHandler(this.teamsToolLoad_Click);
             // 
             // playersToolLoadItem
             // 
             this.playersToolLoadItem.Name = "playersToolLoadItem";
-            this.playersToolLoadItem.Size = new System.Drawing.Size(216, 26);
+            this.playersToolLoadItem.Size = new System.Drawing.Size(130, 26);
             this.playersToolLoadItem.Text = "Players";
             this.playersToolLoadItem.Click += new System.EventHandler(this.playersToolLoad_Click);
             // 
@@ -138,20 +168,20 @@
             this.teamsToolSaveItem,
             this.playersToolSaveItem});
             this.saveTool.Name = "saveTool";
-            this.saveTool.Size = new System.Drawing.Size(216, 26);
+            this.saveTool.Size = new System.Drawing.Size(117, 26);
             this.saveTool.Text = "Save";
             // 
             // teamsToolSaveItem
             // 
             this.teamsToolSaveItem.Name = "teamsToolSaveItem";
-            this.teamsToolSaveItem.Size = new System.Drawing.Size(216, 26);
+            this.teamsToolSaveItem.Size = new System.Drawing.Size(130, 26);
             this.teamsToolSaveItem.Text = "Teams";
             this.teamsToolSaveItem.Click += new System.EventHandler(this.teamsToolSave_Click);
             // 
             // playersToolSaveItem
             // 
             this.playersToolSaveItem.Name = "playersToolSaveItem";
-            this.playersToolSaveItem.Size = new System.Drawing.Size(216, 26);
+            this.playersToolSaveItem.Size = new System.Drawing.Size(130, 26);
             this.playersToolSaveItem.Text = "Players";
             this.playersToolSaveItem.Click += new System.EventHandler(this.playersToolSave_Click);
             // 
@@ -282,7 +312,7 @@
             // 
             // tabDisplayTeam
             // 
-            this.tabDisplayTeam.Controls.Add(this.listView1);
+            this.tabDisplayTeam.Controls.Add(this.teamPlayersListView);
             this.tabDisplayTeam.Controls.Add(this.gotoAddTeamButton);
             this.tabDisplayTeam.Controls.Add(this.teamListView);
             this.tabDisplayTeam.Location = new System.Drawing.Point(4, 25);
@@ -292,6 +322,52 @@
             this.tabDisplayTeam.TabIndex = 3;
             this.tabDisplayTeam.Text = "Team";
             this.tabDisplayTeam.UseVisualStyleBackColor = true;
+            // 
+            // teamPlayersListView
+            // 
+            this.teamPlayersListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnTeamPlayerID,
+            this.columnTeamPlayerName,
+            this.columnTeamPlayerDOB,
+            this.columnTeamPlayerHeight,
+            this.columnTeamPlayerWeight,
+            this.columnTeamPlayerBirthPlace});
+            this.teamPlayersListView.GridLines = true;
+            this.teamPlayersListView.Location = new System.Drawing.Point(651, 59);
+            this.teamPlayersListView.Name = "teamPlayersListView";
+            this.teamPlayersListView.Size = new System.Drawing.Size(531, 481);
+            this.teamPlayersListView.TabIndex = 2;
+            this.teamPlayersListView.UseCompatibleStateImageBehavior = false;
+            this.teamPlayersListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnTeamPlayerID
+            // 
+            this.columnTeamPlayerID.Text = "ID";
+            // 
+            // columnTeamPlayerName
+            // 
+            this.columnTeamPlayerName.Text = "Name";
+            this.columnTeamPlayerName.Width = 80;
+            // 
+            // columnTeamPlayerDOB
+            // 
+            this.columnTeamPlayerDOB.Text = "Date Of Birth";
+            this.columnTeamPlayerDOB.Width = 112;
+            // 
+            // columnTeamPlayerHeight
+            // 
+            this.columnTeamPlayerHeight.Text = "Height";
+            this.columnTeamPlayerHeight.Width = 73;
+            // 
+            // columnTeamPlayerWeight
+            // 
+            this.columnTeamPlayerWeight.Text = "Weight";
+            this.columnTeamPlayerWeight.Width = 76;
+            // 
+            // columnTeamPlayerBirthPlace
+            // 
+            this.columnTeamPlayerBirthPlace.Text = "Birth Place";
+            this.columnTeamPlayerBirthPlace.Width = 127;
             // 
             // gotoAddTeamButton
             // 
@@ -310,8 +386,8 @@
             this.columnGround,
             this.columnCoach,
             this.columnFoundedYear,
-            this.columnRegion,
-            this.columnPlayers});
+            this.columnRegion});
+            this.teamListView.FullRowSelect = true;
             this.teamListView.GridLines = true;
             this.teamListView.Location = new System.Drawing.Point(43, 59);
             this.teamListView.Name = "teamListView";
@@ -319,6 +395,7 @@
             this.teamListView.TabIndex = 0;
             this.teamListView.UseCompatibleStateImageBehavior = false;
             this.teamListView.View = System.Windows.Forms.View.Details;
+            this.teamListView.SelectedIndexChanged += new System.EventHandler(this.teamListView_SelectedIndexChanged);
             // 
             // columnName
             // 
@@ -342,13 +419,19 @@
             this.columnRegion.Text = "Region";
             this.columnRegion.Width = 86;
             // 
-            // columnPlayers
-            // 
-            this.columnPlayers.Text = "Players";
-            this.columnPlayers.Width = 298;
-            // 
             // tabDisplayPlayers
             // 
+            this.tabDisplayPlayers.Controls.Add(this.playerTeamRegionTextBox);
+            this.tabDisplayPlayers.Controls.Add(this.playerTeamYearFoundedTextBox);
+            this.tabDisplayPlayers.Controls.Add(this.playerTeamCoachTextBox);
+            this.tabDisplayPlayers.Controls.Add(this.playerTeamGroundTextBox);
+            this.tabDisplayPlayers.Controls.Add(this.playerTeamNameTextBox);
+            this.tabDisplayPlayers.Controls.Add(this.playerTeamRegionLabel);
+            this.tabDisplayPlayers.Controls.Add(this.playerTeamYearFoundedLabel);
+            this.tabDisplayPlayers.Controls.Add(this.playerTeamCoachLabel);
+            this.tabDisplayPlayers.Controls.Add(this.playerTeamGroundLabel);
+            this.tabDisplayPlayers.Controls.Add(this.playerTeamNameLabel);
+            this.tabDisplayPlayers.Controls.Add(this.playerTeamDetailsLabel);
             this.tabDisplayPlayers.Controls.Add(this.gotoAddPlayerButton);
             this.tabDisplayPlayers.Controls.Add(this.playerListView);
             this.tabDisplayPlayers.Location = new System.Drawing.Point(4, 25);
@@ -358,6 +441,101 @@
             this.tabDisplayPlayers.TabIndex = 1;
             this.tabDisplayPlayers.Text = "Players";
             this.tabDisplayPlayers.UseVisualStyleBackColor = true;
+            // 
+            // playerTeamRegionTextBox
+            // 
+            this.playerTeamRegionTextBox.Location = new System.Drawing.Point(910, 359);
+            this.playerTeamRegionTextBox.Name = "playerTeamRegionTextBox";
+            this.playerTeamRegionTextBox.ReadOnly = true;
+            this.playerTeamRegionTextBox.Size = new System.Drawing.Size(192, 22);
+            this.playerTeamRegionTextBox.TabIndex = 12;
+            // 
+            // playerTeamYearFoundedTextBox
+            // 
+            this.playerTeamYearFoundedTextBox.Location = new System.Drawing.Point(910, 319);
+            this.playerTeamYearFoundedTextBox.Name = "playerTeamYearFoundedTextBox";
+            this.playerTeamYearFoundedTextBox.ReadOnly = true;
+            this.playerTeamYearFoundedTextBox.Size = new System.Drawing.Size(192, 22);
+            this.playerTeamYearFoundedTextBox.TabIndex = 11;
+            // 
+            // playerTeamCoachTextBox
+            // 
+            this.playerTeamCoachTextBox.Location = new System.Drawing.Point(910, 278);
+            this.playerTeamCoachTextBox.Name = "playerTeamCoachTextBox";
+            this.playerTeamCoachTextBox.ReadOnly = true;
+            this.playerTeamCoachTextBox.Size = new System.Drawing.Size(192, 22);
+            this.playerTeamCoachTextBox.TabIndex = 10;
+            // 
+            // playerTeamGroundTextBox
+            // 
+            this.playerTeamGroundTextBox.Location = new System.Drawing.Point(910, 239);
+            this.playerTeamGroundTextBox.Name = "playerTeamGroundTextBox";
+            this.playerTeamGroundTextBox.ReadOnly = true;
+            this.playerTeamGroundTextBox.Size = new System.Drawing.Size(192, 22);
+            this.playerTeamGroundTextBox.TabIndex = 9;
+            // 
+            // playerTeamNameTextBox
+            // 
+            this.playerTeamNameTextBox.Location = new System.Drawing.Point(910, 198);
+            this.playerTeamNameTextBox.Name = "playerTeamNameTextBox";
+            this.playerTeamNameTextBox.ReadOnly = true;
+            this.playerTeamNameTextBox.Size = new System.Drawing.Size(192, 22);
+            this.playerTeamNameTextBox.TabIndex = 8;
+            // 
+            // playerTeamRegionLabel
+            // 
+            this.playerTeamRegionLabel.AutoSize = true;
+            this.playerTeamRegionLabel.Location = new System.Drawing.Point(784, 359);
+            this.playerTeamRegionLabel.Name = "playerTeamRegionLabel";
+            this.playerTeamRegionLabel.Size = new System.Drawing.Size(53, 17);
+            this.playerTeamRegionLabel.TabIndex = 7;
+            this.playerTeamRegionLabel.Text = "Region";
+            // 
+            // playerTeamYearFoundedLabel
+            // 
+            this.playerTeamYearFoundedLabel.AutoSize = true;
+            this.playerTeamYearFoundedLabel.Location = new System.Drawing.Point(784, 319);
+            this.playerTeamYearFoundedLabel.Name = "playerTeamYearFoundedLabel";
+            this.playerTeamYearFoundedLabel.Size = new System.Drawing.Size(98, 17);
+            this.playerTeamYearFoundedLabel.TabIndex = 6;
+            this.playerTeamYearFoundedLabel.Text = "Year Founded";
+            // 
+            // playerTeamCoachLabel
+            // 
+            this.playerTeamCoachLabel.AutoSize = true;
+            this.playerTeamCoachLabel.Location = new System.Drawing.Point(784, 278);
+            this.playerTeamCoachLabel.Name = "playerTeamCoachLabel";
+            this.playerTeamCoachLabel.Size = new System.Drawing.Size(48, 17);
+            this.playerTeamCoachLabel.TabIndex = 5;
+            this.playerTeamCoachLabel.Text = "Coach";
+            // 
+            // playerTeamGroundLabel
+            // 
+            this.playerTeamGroundLabel.AutoSize = true;
+            this.playerTeamGroundLabel.Location = new System.Drawing.Point(784, 239);
+            this.playerTeamGroundLabel.Name = "playerTeamGroundLabel";
+            this.playerTeamGroundLabel.Size = new System.Drawing.Size(56, 17);
+            this.playerTeamGroundLabel.TabIndex = 4;
+            this.playerTeamGroundLabel.Text = "Ground";
+            // 
+            // playerTeamNameLabel
+            // 
+            this.playerTeamNameLabel.AutoSize = true;
+            this.playerTeamNameLabel.Location = new System.Drawing.Point(784, 201);
+            this.playerTeamNameLabel.Name = "playerTeamNameLabel";
+            this.playerTeamNameLabel.Size = new System.Drawing.Size(85, 17);
+            this.playerTeamNameLabel.TabIndex = 3;
+            this.playerTeamNameLabel.Text = "Team Name";
+            // 
+            // playerTeamDetailsLabel
+            // 
+            this.playerTeamDetailsLabel.AutoSize = true;
+            this.playerTeamDetailsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playerTeamDetailsLabel.Location = new System.Drawing.Point(866, 117);
+            this.playerTeamDetailsLabel.Name = "playerTeamDetailsLabel";
+            this.playerTeamDetailsLabel.Size = new System.Drawing.Size(201, 25);
+            this.playerTeamDetailsLabel.TabIndex = 2;
+            this.playerTeamDetailsLabel.Text = "Player\'s Team Details";
             // 
             // gotoAddPlayerButton
             // 
@@ -379,13 +557,15 @@
             this.columnWeight,
             this.columnBirthPlace,
             this.columnTeam});
+            this.playerListView.FullRowSelect = true;
             this.playerListView.GridLines = true;
-            this.playerListView.Location = new System.Drawing.Point(15, 72);
+            this.playerListView.Location = new System.Drawing.Point(32, 65);
             this.playerListView.Name = "playerListView";
-            this.playerListView.Size = new System.Drawing.Size(731, 498);
+            this.playerListView.Size = new System.Drawing.Size(730, 498);
             this.playerListView.TabIndex = 0;
             this.playerListView.UseCompatibleStateImageBehavior = false;
             this.playerListView.View = System.Windows.Forms.View.Details;
+            this.playerListView.SelectedIndexChanged += new System.EventHandler(this.playerListView_SelectedIndexChanged);
             // 
             // columnID
             // 
@@ -448,15 +628,53 @@
             this.SearchTab.Text = "Search";
             this.SearchTab.UseVisualStyleBackColor = true;
             // 
-            // chartTab
+            // searchByLabel
             // 
-            this.chartTab.Location = new System.Drawing.Point(4, 25);
-            this.chartTab.Name = "chartTab";
-            this.chartTab.Padding = new System.Windows.Forms.Padding(3);
-            this.chartTab.Size = new System.Drawing.Size(855, 414);
-            this.chartTab.TabIndex = 6;
-            this.chartTab.Text = "Chart";
-            this.chartTab.UseVisualStyleBackColor = true;
+            this.searchByLabel.AutoSize = true;
+            this.searchByLabel.Location = new System.Drawing.Point(29, 18);
+            this.searchByLabel.Name = "searchByLabel";
+            this.searchByLabel.Size = new System.Drawing.Size(77, 17);
+            this.searchByLabel.TabIndex = 5;
+            this.searchByLabel.Text = "Search By:";
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(592, 47);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(121, 31);
+            this.searchButton.TabIndex = 4;
+            this.searchButton.Text = "Search";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // searchTextBox
+            // 
+            this.searchTextBox.Location = new System.Drawing.Point(187, 51);
+            this.searchTextBox.Name = "searchTextBox";
+            this.searchTextBox.Size = new System.Drawing.Size(365, 22);
+            this.searchTextBox.TabIndex = 3;
+            // 
+            // ageRadioButton
+            // 
+            this.ageRadioButton.AutoSize = true;
+            this.ageRadioButton.Checked = true;
+            this.ageRadioButton.Location = new System.Drawing.Point(29, 41);
+            this.ageRadioButton.Name = "ageRadioButton";
+            this.ageRadioButton.Size = new System.Drawing.Size(54, 21);
+            this.ageRadioButton.TabIndex = 2;
+            this.ageRadioButton.TabStop = true;
+            this.ageRadioButton.Text = "Age";
+            this.ageRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // placeOfBirthRadioButton
+            // 
+            this.placeOfBirthRadioButton.AutoSize = true;
+            this.placeOfBirthRadioButton.Location = new System.Drawing.Point(29, 68);
+            this.placeOfBirthRadioButton.Name = "placeOfBirthRadioButton";
+            this.placeOfBirthRadioButton.Size = new System.Drawing.Size(113, 21);
+            this.placeOfBirthRadioButton.TabIndex = 1;
+            this.placeOfBirthRadioButton.Text = "Place of Birth";
+            this.placeOfBirthRadioButton.UseVisualStyleBackColor = true;
             // 
             // searchListView
             // 
@@ -475,45 +693,6 @@
             this.searchListView.TabIndex = 0;
             this.searchListView.UseCompatibleStateImageBehavior = false;
             this.searchListView.View = System.Windows.Forms.View.Details;
-            // 
-            // placeOfBirthRadioButton
-            // 
-            this.placeOfBirthRadioButton.AutoSize = true;
-            this.placeOfBirthRadioButton.Location = new System.Drawing.Point(29, 68);
-            this.placeOfBirthRadioButton.Name = "placeOfBirthRadioButton";
-            this.placeOfBirthRadioButton.Size = new System.Drawing.Size(113, 21);
-            this.placeOfBirthRadioButton.TabIndex = 1;
-            this.placeOfBirthRadioButton.Text = "Place of Birth";
-            this.placeOfBirthRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // ageRadioButton
-            // 
-            this.ageRadioButton.AutoSize = true;
-            this.ageRadioButton.Checked = true;
-            this.ageRadioButton.Location = new System.Drawing.Point(29, 41);
-            this.ageRadioButton.Name = "ageRadioButton";
-            this.ageRadioButton.Size = new System.Drawing.Size(54, 21);
-            this.ageRadioButton.TabIndex = 2;
-            this.ageRadioButton.TabStop = true;
-            this.ageRadioButton.Text = "Age";
-            this.ageRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // searchTextBox
-            // 
-            this.searchTextBox.Location = new System.Drawing.Point(187, 51);
-            this.searchTextBox.Name = "searchTextBox";
-            this.searchTextBox.Size = new System.Drawing.Size(365, 22);
-            this.searchTextBox.TabIndex = 3;
-            // 
-            // searchButton
-            // 
-            this.searchButton.Location = new System.Drawing.Point(592, 47);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(121, 31);
-            this.searchButton.TabIndex = 4;
-            this.searchButton.Text = "Search";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // columnIDSearch
             // 
@@ -549,23 +728,77 @@
             this.columnTeamSearch.Text = "Team";
             this.columnTeamSearch.Width = 184;
             // 
-            // searchByLabel
+            // chartTab
             // 
-            this.searchByLabel.AutoSize = true;
-            this.searchByLabel.Location = new System.Drawing.Point(29, 18);
-            this.searchByLabel.Name = "searchByLabel";
-            this.searchByLabel.Size = new System.Drawing.Size(77, 17);
-            this.searchByLabel.TabIndex = 5;
-            this.searchByLabel.Text = "Search By:";
+            this.chartTab.Controls.Add(this.AgeChart);
+            this.chartTab.Controls.Add(this.ageHistogramButton);
+            this.chartTab.Controls.Add(this.HeightvsWeightButton);
+            this.chartTab.Controls.Add(this.HeightvsWeightChart);
+            this.chartTab.Location = new System.Drawing.Point(4, 25);
+            this.chartTab.Name = "chartTab";
+            this.chartTab.Padding = new System.Windows.Forms.Padding(3);
+            this.chartTab.Size = new System.Drawing.Size(1255, 590);
+            this.chartTab.TabIndex = 6;
+            this.chartTab.Text = "Chart";
+            this.chartTab.UseVisualStyleBackColor = true;
             // 
-            // listView1
+            // AgeChart
             // 
-            this.listView1.Location = new System.Drawing.Point(693, 59);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(531, 481);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            chartArea1.Name = "ChartArea1";
+            this.AgeChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.AgeChart.Legends.Add(legend1);
+            this.AgeChart.Location = new System.Drawing.Point(88, 45);
+            this.AgeChart.Name = "AgeChart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Age";
+            this.AgeChart.Series.Add(series1);
+            this.AgeChart.Size = new System.Drawing.Size(348, 370);
+            this.AgeChart.TabIndex = 3;
+            this.AgeChart.Text = "Age Histogram";
+            // 
+            // ageHistogramButton
+            // 
+            this.ageHistogramButton.AutoSize = true;
+            this.ageHistogramButton.Location = new System.Drawing.Point(226, 18);
+            this.ageHistogramButton.Name = "ageHistogramButton";
+            this.ageHistogramButton.Size = new System.Drawing.Size(54, 21);
+            this.ageHistogramButton.TabIndex = 2;
+            this.ageHistogramButton.TabStop = true;
+            this.ageHistogramButton.Text = "Age";
+            this.ageHistogramButton.UseVisualStyleBackColor = true;
+            // 
+            // HeightvsWeightButton
+            // 
+            this.HeightvsWeightButton.AutoSize = true;
+            this.HeightvsWeightButton.Location = new System.Drawing.Point(61, 18);
+            this.HeightvsWeightButton.Name = "HeightvsWeightButton";
+            this.HeightvsWeightButton.Size = new System.Drawing.Size(136, 21);
+            this.HeightvsWeightButton.TabIndex = 1;
+            this.HeightvsWeightButton.TabStop = true;
+            this.HeightvsWeightButton.Text = "Height vs Weight";
+            this.HeightvsWeightButton.UseVisualStyleBackColor = true;
+            // 
+            // HeightvsWeightChart
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.HeightvsWeightChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.HeightvsWeightChart.Legends.Add(legend2);
+            this.HeightvsWeightChart.Location = new System.Drawing.Point(442, 122);
+            this.HeightvsWeightChart.Name = "HeightvsWeightChart";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Height";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Weight";
+            this.HeightvsWeightChart.Series.Add(series2);
+            this.HeightvsWeightChart.Series.Add(series3);
+            this.HeightvsWeightChart.Size = new System.Drawing.Size(669, 358);
+            this.HeightvsWeightChart.TabIndex = 0;
+            this.HeightvsWeightChart.Text = "HeightvsWeightChart";
             // 
             // mainForm
             // 
@@ -583,9 +816,14 @@
             this.enrollmentPage.PerformLayout();
             this.tabDisplayTeam.ResumeLayout(false);
             this.tabDisplayPlayers.ResumeLayout(false);
+            this.tabDisplayPlayers.PerformLayout();
             this.rugbyManagementTab.ResumeLayout(false);
             this.SearchTab.ResumeLayout(false);
             this.SearchTab.PerformLayout();
+            this.chartTab.ResumeLayout(false);
+            this.chartTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AgeChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeightvsWeightChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -622,7 +860,6 @@
         private System.Windows.Forms.ColumnHeader columnCoach;
         private System.Windows.Forms.ColumnHeader columnFoundedYear;
         private System.Windows.Forms.ColumnHeader columnRegion;
-        private System.Windows.Forms.ColumnHeader columnPlayers;
         private System.Windows.Forms.TabPage tabDisplayPlayers;
         private System.Windows.Forms.Button gotoAddPlayerButton;
         private System.Windows.Forms.ListView playerListView;
@@ -650,7 +887,28 @@
         private System.Windows.Forms.ColumnHeader columnWeightSearch;
         private System.Windows.Forms.ColumnHeader columnBirthPlaceSearch;
         private System.Windows.Forms.ColumnHeader columnTeamSearch;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView teamPlayersListView;
+        private System.Windows.Forms.ColumnHeader columnTeamPlayerID;
+        private System.Windows.Forms.ColumnHeader columnTeamPlayerName;
+        private System.Windows.Forms.ColumnHeader columnTeamPlayerDOB;
+        private System.Windows.Forms.ColumnHeader columnTeamPlayerHeight;
+        private System.Windows.Forms.ColumnHeader columnTeamPlayerWeight;
+        private System.Windows.Forms.ColumnHeader columnTeamPlayerBirthPlace;
+        private System.Windows.Forms.TextBox playerTeamRegionTextBox;
+        private System.Windows.Forms.TextBox playerTeamYearFoundedTextBox;
+        private System.Windows.Forms.TextBox playerTeamCoachTextBox;
+        private System.Windows.Forms.TextBox playerTeamGroundTextBox;
+        private System.Windows.Forms.TextBox playerTeamNameTextBox;
+        private System.Windows.Forms.Label playerTeamRegionLabel;
+        private System.Windows.Forms.Label playerTeamYearFoundedLabel;
+        private System.Windows.Forms.Label playerTeamCoachLabel;
+        private System.Windows.Forms.Label playerTeamGroundLabel;
+        private System.Windows.Forms.Label playerTeamNameLabel;
+        private System.Windows.Forms.Label playerTeamDetailsLabel;
+        private System.Windows.Forms.DataVisualization.Charting.Chart HeightvsWeightChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart AgeChart;
+        private System.Windows.Forms.RadioButton ageHistogramButton;
+        private System.Windows.Forms.RadioButton HeightvsWeightButton;
     }
 }
 

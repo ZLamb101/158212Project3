@@ -38,8 +38,12 @@
             this.addPlayerWeightTextBox = new System.Windows.Forms.TextBox();
             this.addPlayerHeightTextBox = new System.Windows.Forms.TextBox();
             this.addPlayerBirthPlaceTextBox = new System.Windows.Forms.TextBox();
-            this.addPlayerBirthDateTextBox = new System.Windows.Forms.TextBox();
+            this.addPlayerBirthDateDayTextBox = new System.Windows.Forms.TextBox();
             this.addPlayerTeamNameTextBox = new System.Windows.Forms.TextBox();
+            this.DOBLabel1 = new System.Windows.Forms.Label();
+            this.DOBLabel2 = new System.Windows.Forms.Label();
+            this.addPlayerBirthDateMonthTextBox = new System.Windows.Forms.TextBox();
+            this.addPlayerBirthDateYearTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // addPlayerButton
@@ -82,7 +86,7 @@
             // addPlayerBirthDateLabel
             // 
             this.addPlayerBirthDateLabel.AutoSize = true;
-            this.addPlayerBirthDateLabel.Location = new System.Drawing.Point(251, 268);
+            this.addPlayerBirthDateLabel.Location = new System.Drawing.Point(237, 254);
             this.addPlayerBirthDateLabel.Name = "addPlayerBirthDateLabel";
             this.addPlayerBirthDateLabel.Size = new System.Drawing.Size(90, 17);
             this.addPlayerBirthDateLabel.TabIndex = 4;
@@ -91,7 +95,7 @@
             // addPlayerHeightLabel
             // 
             this.addPlayerHeightLabel.AutoSize = true;
-            this.addPlayerHeightLabel.Location = new System.Drawing.Point(251, 197);
+            this.addPlayerHeightLabel.Location = new System.Drawing.Point(251, 183);
             this.addPlayerHeightLabel.Name = "addPlayerHeightLabel";
             this.addPlayerHeightLabel.Size = new System.Drawing.Size(49, 17);
             this.addPlayerHeightLabel.TabIndex = 5;
@@ -100,7 +104,7 @@
             // addPlayerWeightLabel
             // 
             this.addPlayerWeightLabel.AutoSize = true;
-            this.addPlayerWeightLabel.Location = new System.Drawing.Point(79, 197);
+            this.addPlayerWeightLabel.Location = new System.Drawing.Point(79, 183);
             this.addPlayerWeightLabel.Name = "addPlayerWeightLabel";
             this.addPlayerWeightLabel.Size = new System.Drawing.Size(52, 17);
             this.addPlayerWeightLabel.TabIndex = 6;
@@ -109,7 +113,7 @@
             // addPlayerBirthPlaceLabel
             // 
             this.addPlayerBirthPlaceLabel.AutoSize = true;
-            this.addPlayerBirthPlaceLabel.Location = new System.Drawing.Point(79, 268);
+            this.addPlayerBirthPlaceLabel.Location = new System.Drawing.Point(79, 254);
             this.addPlayerBirthPlaceLabel.Name = "addPlayerBirthPlaceLabel";
             this.addPlayerBirthPlaceLabel.Size = new System.Drawing.Size(76, 17);
             this.addPlayerBirthPlaceLabel.TabIndex = 7;
@@ -147,31 +151,31 @@
             // 
             // addPlayerWeightTextBox
             // 
-            this.addPlayerWeightTextBox.Location = new System.Drawing.Point(82, 229);
+            this.addPlayerWeightTextBox.Location = new System.Drawing.Point(82, 212);
             this.addPlayerWeightTextBox.Name = "addPlayerWeightTextBox";
             this.addPlayerWeightTextBox.Size = new System.Drawing.Size(100, 22);
             this.addPlayerWeightTextBox.TabIndex = 12;
             // 
             // addPlayerHeightTextBox
             // 
-            this.addPlayerHeightTextBox.Location = new System.Drawing.Point(254, 228);
+            this.addPlayerHeightTextBox.Location = new System.Drawing.Point(254, 212);
             this.addPlayerHeightTextBox.Name = "addPlayerHeightTextBox";
             this.addPlayerHeightTextBox.Size = new System.Drawing.Size(100, 22);
             this.addPlayerHeightTextBox.TabIndex = 13;
             // 
             // addPlayerBirthPlaceTextBox
             // 
-            this.addPlayerBirthPlaceTextBox.Location = new System.Drawing.Point(82, 289);
+            this.addPlayerBirthPlaceTextBox.Location = new System.Drawing.Point(82, 288);
             this.addPlayerBirthPlaceTextBox.Name = "addPlayerBirthPlaceTextBox";
             this.addPlayerBirthPlaceTextBox.Size = new System.Drawing.Size(100, 22);
             this.addPlayerBirthPlaceTextBox.TabIndex = 14;
             // 
-            // addPlayerBirthDateTextBox
+            // addPlayerBirthDateDayTextBox
             // 
-            this.addPlayerBirthDateTextBox.Location = new System.Drawing.Point(254, 288);
-            this.addPlayerBirthDateTextBox.Name = "addPlayerBirthDateTextBox";
-            this.addPlayerBirthDateTextBox.Size = new System.Drawing.Size(100, 22);
-            this.addPlayerBirthDateTextBox.TabIndex = 15;
+            this.addPlayerBirthDateDayTextBox.Location = new System.Drawing.Point(236, 288);
+            this.addPlayerBirthDateDayTextBox.Name = "addPlayerBirthDateDayTextBox";
+            this.addPlayerBirthDateDayTextBox.Size = new System.Drawing.Size(30, 22);
+            this.addPlayerBirthDateDayTextBox.TabIndex = 15;
             // 
             // addPlayerTeamNameTextBox
             // 
@@ -180,13 +184,49 @@
             this.addPlayerTeamNameTextBox.Size = new System.Drawing.Size(184, 22);
             this.addPlayerTeamNameTextBox.TabIndex = 16;
             // 
+            // DOBLabel1
+            // 
+            this.DOBLabel1.AutoSize = true;
+            this.DOBLabel1.Location = new System.Drawing.Point(272, 291);
+            this.DOBLabel1.Name = "DOBLabel1";
+            this.DOBLabel1.Size = new System.Drawing.Size(12, 17);
+            this.DOBLabel1.TabIndex = 17;
+            this.DOBLabel1.Text = "/";
+            // 
+            // DOBLabel2
+            // 
+            this.DOBLabel2.AutoSize = true;
+            this.DOBLabel2.Location = new System.Drawing.Point(328, 291);
+            this.DOBLabel2.Name = "DOBLabel2";
+            this.DOBLabel2.Size = new System.Drawing.Size(12, 17);
+            this.DOBLabel2.TabIndex = 18;
+            this.DOBLabel2.Text = "/";
+            // 
+            // addPlayerBirthDateMonthTextBox
+            // 
+            this.addPlayerBirthDateMonthTextBox.Location = new System.Drawing.Point(290, 288);
+            this.addPlayerBirthDateMonthTextBox.Name = "addPlayerBirthDateMonthTextBox";
+            this.addPlayerBirthDateMonthTextBox.Size = new System.Drawing.Size(32, 22);
+            this.addPlayerBirthDateMonthTextBox.TabIndex = 19;
+            // 
+            // addPlayerBirthDateYearTextBox
+            // 
+            this.addPlayerBirthDateYearTextBox.Location = new System.Drawing.Point(343, 288);
+            this.addPlayerBirthDateYearTextBox.Name = "addPlayerBirthDateYearTextBox";
+            this.addPlayerBirthDateYearTextBox.Size = new System.Drawing.Size(58, 22);
+            this.addPlayerBirthDateYearTextBox.TabIndex = 20;
+            // 
             // addNewPlayerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 505);
+            this.Controls.Add(this.addPlayerBirthDateYearTextBox);
+            this.Controls.Add(this.addPlayerBirthDateMonthTextBox);
+            this.Controls.Add(this.DOBLabel2);
+            this.Controls.Add(this.DOBLabel1);
             this.Controls.Add(this.addPlayerTeamNameTextBox);
-            this.Controls.Add(this.addPlayerBirthDateTextBox);
+            this.Controls.Add(this.addPlayerBirthDateDayTextBox);
             this.Controls.Add(this.addPlayerBirthPlaceTextBox);
             this.Controls.Add(this.addPlayerHeightTextBox);
             this.Controls.Add(this.addPlayerWeightTextBox);
@@ -227,8 +267,12 @@
         private System.Windows.Forms.TextBox addPlayerWeightTextBox;
         private System.Windows.Forms.TextBox addPlayerHeightTextBox;
         private System.Windows.Forms.TextBox addPlayerBirthPlaceTextBox;
-        private System.Windows.Forms.TextBox addPlayerBirthDateTextBox;
+        private System.Windows.Forms.TextBox addPlayerBirthDateDayTextBox;
         private System.Windows.Forms.TextBox addPlayerTeamNameTextBox;
+        private System.Windows.Forms.Label DOBLabel1;
+        private System.Windows.Forms.Label DOBLabel2;
+        private System.Windows.Forms.TextBox addPlayerBirthDateMonthTextBox;
+        private System.Windows.Forms.TextBox addPlayerBirthDateYearTextBox;
     }
 }
 

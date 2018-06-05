@@ -66,10 +66,7 @@ namespace Assignment3 {
         public string saveString() {
             string teamString;
             teamString = mName + ";" + mGround + ";" + mCoach + ";" + mYearFounded + ";" + mRegion;
-            for (int i = 0; i< mPlayers.Count; i++) {
-                teamString = teamString + ";" + mPlayers[i];
-            }
-
+           
             return teamString;
 
 
