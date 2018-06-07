@@ -23,7 +23,7 @@ namespace Assignment3 {
 
         /***
          * Constructor which takes in Name, Ground, Coach, YearFounded, and Region values.
-         * assigns them appropriately and intialises the list of strings for Players.
+         * assigns them appropriately and initializers the list of strings for Players.
          **/
         public Team( string _Name, string _Ground, string _Coach, int _YearFounded, string _Region) {
             mName = _Name;
@@ -85,7 +85,7 @@ namespace Assignment3 {
         }
 
        /***
-        * writes the name,ground,coach,yf,region datamembers into a string for save file format
+        * writes the name,ground,coach,yf,region data members into a string for save file format
         * returns string
         **/
         public string saveString() {
@@ -127,7 +127,7 @@ namespace Assignment3 {
 
         /***
         * Constructor which takes in ID, Name, BirthDate, Height, Weight, and birthplace values.
-        * includes Teamname
+        * includes Team name
         * assigns them appropriately and calculates age
         **/
         public Player(string _ID, string _Name, DateTime _BirthDate, int _Height, int _Weight, string _BirthPlace, string _TeamName) {
@@ -205,7 +205,7 @@ namespace Assignment3 {
         }
 
         /***
-        * writes the id,name,dob,weight,height,birthplace datamembers into a string for save file format
+        * writes the id,name,dob,weight,height,birthplace data members into a string for save file format
         * returns string
         **/
         public string saveString() {
@@ -220,7 +220,7 @@ namespace Assignment3 {
 
         /***
          * gets todays date.
-         * compares date with players birthdate to calculate players age
+         * compares date with players birth date to calculate players age
          * saves players age in mAge
          **/
         private void calcAge() {
@@ -236,22 +236,4 @@ namespace Assignment3 {
     }
 
 
-    // idk?
-    public class RugbyUnion {
-
-        public RugbyUnion() { }
-
-        private List<Team> allTeams;
-        public List<Team> Teams {
-            get { return allTeams;  }
-            set { allTeams = value; }
-        }
-
-        public void AddTeam(Team newTeam) {
-            allTeams.Add(newTeam);
-
-        }
-
-
-    }
 }

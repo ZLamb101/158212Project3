@@ -104,7 +104,6 @@
             this.addTeamGroundTextBox.Name = "addTeamGroundTextBox";
             this.addTeamGroundTextBox.Size = new System.Drawing.Size(100, 22);
             this.addTeamGroundTextBox.TabIndex = 7;
-            
             // 
             // addTeamCoachTextBox
             // 

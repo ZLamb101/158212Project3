@@ -16,11 +16,24 @@ using Assignment3;
 namespace MainForm {
     public partial class mainForm : Form {
 
-        public RugbyUnion rugbyUnion = new RugbyUnion(); //< do i even want to keep this tho !!!!!!!!!!!!!!!!!!!
-        public List<Team> listTeam = new List<Team>();          //< listTeam , a List of teams which represents all rugby team
-        public List<Player> listPlayer = new List<Player>();    //< listPlayer, a list of players which represents all players
 
-        Dictionary<string, byte> ageCount = new Dictionary<string, byte>   //< ageCount, Dictionary to hold each count for age histogram
+        public List<Team> listTeam;          //< listTeam , a List of teams which represents all rugby team
+        public List<Player> listPlayer;    //< listPlayer, a list of players which represents all players
+
+        Dictionary<string, byte> ageCount;   //< ageCount, Dictionary to hold each count for age histogram
+                
+
+
+        /***
+         *  Constructor
+         *  Initializes the Form
+         **/
+        public mainForm() {
+            listTeam = new List<Team>();
+            listPlayer = new List<Player>();
+            
+
+            ageCount = new Dictionary<string, byte>   
                 {
                     {"0-10", 0},
                     {"10-20", 0},
@@ -32,11 +45,6 @@ namespace MainForm {
                 };
 
 
-        /***
-         *  Constructor
-         *  Initializes the Form
-         **/
-        public mainForm() {
             InitializeComponent();
         }
 
@@ -50,8 +58,9 @@ namespace MainForm {
                 if (ofd.ShowDialog() == DialogResult.OK) {
                     FileStream fs = File.Open(ofd.FileName, FileMode.Open);
                     StreamReader reader = new StreamReader(fs);
-                    string line;                    
+                                      
                     while (reader.Peek() >= 0) {
+                        string line;
                         line = reader.ReadLine();                      
                         listTeam.Add(stringToTeam(line));
                     }
@@ -65,7 +74,7 @@ namespace MainForm {
 
         /***
          * Takes a string and splits it into multiple strings then
-         * Reads it into a Team and adds to listviews
+         * Reads it into a Team and adds to list views
          * returns the created Team
          **/
         private Team stringToTeam(string line) {            
@@ -74,7 +83,7 @@ namespace MainForm {
             if (words.Count != 5) throw new FileLoadException();
             Team tempTeam = new Team(words[0], words[1], words[2], Convert.ToInt32(words[3]), words[4]);
 
-            updateTeamListView(tempTeam);
+            newTeamUpdate(tempTeam);
             return tempTeam;
         }
 
@@ -93,8 +102,9 @@ namespace MainForm {
                 if (ofd.ShowDialog() == DialogResult.OK) {
                     FileStream fs = File.Open(ofd.FileName, FileMode.Open);
                     StreamReader reader = new StreamReader(fs);
-                    string line;
+                    
                     while (reader.Peek() >= 0) {
+                        string line;
                         line = reader.ReadLine();
                         listPlayer.Add(stringToPlayer(line));
 
@@ -112,8 +122,8 @@ namespace MainForm {
 
         /***
          * Takes a string and splits it into multiple strings then
-         * Validates the input to make sure there is no multiple occurances
-         * Reads it into a Player and adds to listviews
+         * Validates the input to make sure there is no multiple occurrences
+         * Reads it into a Player and adds to list views
          * returns the created Player
          **/
         private Player stringToPlayer(string line) {
@@ -124,47 +134,31 @@ namespace MainForm {
                 tempPlayer = new Player(words[0], words[1], Convert.ToDateTime(words[2]), Convert.ToInt32(words[3]), Convert.ToInt32(words[4]), words[5]);
             } else {
                 tempPlayer = new Player(words[0], words[1], Convert.ToDateTime(words[2]), Convert.ToInt32(words[3]), Convert.ToInt32(words[4]), words[5], words[6]);
-                for(byte i=0;i < listTeam.Count; i++) {
-                    if(listTeam[i].Name == words[6]) {
-                        listTeam[i].Players.Add(tempPlayer.Name);
-                        break;
+                if (listTeam.Count == 0) tempPlayer.TeamName = "";
+                else {                
+                    for (byte i=0;i < listTeam.Count; i++) {
+                        if(listTeam[i].Name == words[6]) {
+                            listTeam[i].Players.Add(tempPlayer.Name);
+                            break;
+                        }
+                        if(i == listTeam.Count - 1) tempPlayer.TeamName = "";
                     }
-                    if(i == listTeam.Count - 1) tempPlayer.TeamName = "";
                 }
             }  
              for (byte i = 0; i < listPlayer.Count; i++) {
                 if (words[0] == listPlayer[i].ID) throw new FormatException(words[0]);                
              }
-             updatePlayerListView(tempPlayer);
+             newPlayerUpdate(tempPlayer);
  
             return tempPlayer;
         }
 
-
-
-        /***
-        * Clears ageChart HistoGram
-        * and replots the histogram
-        **/
-        private void updateAgeChart() {
-            ageChart.Series["Age"].Points.Clear();
-            
-            ageChart.Series["Age"].Points.AddXY("0-10", ageCount["0-10"]);
-            ageChart.Series["Age"].Points.AddXY("10-20", ageCount["10-20"]);
-            ageChart.Series["Age"].Points.AddXY("20-30", ageCount["20-30"]);
-            ageChart.Series["Age"].Points.AddXY("30-40", ageCount["30-40"]);
-            ageChart.Series["Age"].Points.AddXY("40-50", ageCount["40-50"]);
-            ageChart.Series["Age"].Points.AddXY("50-60", ageCount["50-60"]);
-            ageChart.Series["Age"].Points.AddXY("60+", ageCount["60+"]);
-        }
-
-
         /***
         * Takes a Player in params
-        * and adds it to related listviews
-        * adds Height, weight and age to nessecery place for charts
+        * and adds it to related list views
+        * adds Height, weight and age to necessary place for charts
         **/
-        private void updatePlayerListView(Player tempPlayer) {
+        private void newPlayerUpdate(Player tempPlayer) {
             ListViewItem item = new ListViewItem(new[] { tempPlayer.ID, tempPlayer.Name, Convert.ToString(tempPlayer.BirthDate), Convert.ToString(tempPlayer.Height), Convert.ToString(tempPlayer.Weight), tempPlayer.BirthPlace, tempPlayer.TeamName });
             playerListView.Items.Add(item);
 
@@ -186,15 +180,34 @@ namespace MainForm {
         }
 
 
+
+
         /***
-        * Takes a Team in params and adds it to related listviews
+        * Takes a Team in params and adds it to related list views
         **/
-        private void updateTeamListView(Team tempTeam) {
+        private void newTeamUpdate(Team tempTeam) {
             ListViewItem item = new ListViewItem(new[] { tempTeam.Name, tempTeam.Ground, tempTeam.Coach, Convert.ToString(tempTeam.YearFounded), tempTeam.Region});
             teamListView.Items.Add(item);
 
             ListViewItem item2 = new ListViewItem(new[] { tempTeam.Name });
             enrollTeamListView.Items.Add(item2);
+        }
+
+
+       /***
+        * Clears ageChart HistoGram
+        * and re plots the histogram
+        **/
+        private void updateAgeChart() {
+            ageChart.Series["Age"].Points.Clear();
+            
+            ageChart.Series["Age"].Points.AddXY("0-10", ageCount["0-10"]);
+            ageChart.Series["Age"].Points.AddXY("10-20", ageCount["10-20"]);
+            ageChart.Series["Age"].Points.AddXY("20-30", ageCount["20-30"]);
+            ageChart.Series["Age"].Points.AddXY("30-40", ageCount["30-40"]);
+            ageChart.Series["Age"].Points.AddXY("40-50", ageCount["40-50"]);
+            ageChart.Series["Age"].Points.AddXY("50-60", ageCount["50-60"]);
+            ageChart.Series["Age"].Points.AddXY("60+", ageCount["60+"]);
         }
 
 
@@ -233,6 +246,7 @@ namespace MainForm {
             save.FileName = "SavePlayerList.txt";
             save.Filter = "Text File | *.txt";
             if (save.ShowDialog() == DialogResult.OK) {
+               
                 FileStream fs;
                 fs = File.Create(save.FileName);
                 StreamWriter writer;
@@ -270,14 +284,14 @@ namespace MainForm {
         /***
          * When Button is pressed
          * Open Add new player tab
-         * if player is added update listview
+         * if player is added update list view
          **/
-        private void gotoAddPlayerButton_Click(object sender, EventArgs e) {
-            int i = listPlayer.Count - 1;
+        private void gotoAddPlayerButton_Click(object sender, EventArgs e) {           
             addNewPlayerForm form2 = new addNewPlayerForm(this);
             form2.ShowDialog();
+            int i = listPlayer.Count - 1;
             if (listPlayer.Count - 1 != i) {          
-                updatePlayerListView(listPlayer[i+1]);
+                newPlayerUpdate(listPlayer[i+1]);
             }
 
         }
@@ -285,25 +299,25 @@ namespace MainForm {
         /***
         * When Button is pressed
         * Open Add new team tab
-        * if team is added update listview
+        * if team is added update list view
         **/
         private void gotoAddTeamButton_Click(object sender, EventArgs e) {
-            int i = listTeam.Count - 1;
+            
             addNewTeamForm form2 = new addNewTeamForm(this);
             form2.ShowDialog();
-
+            int i = listTeam.Count - 1;
             if (listTeam.Count - 1 != i) {              
-                updateTeamListView(listTeam[i+1]);
+                newTeamUpdate(listTeam[i+1]);
             }
         }
 
 
         /***
          * On Enrollment Tab
-         * When Enrol Button is Clicked
+         * When Enroll Button is Clicked
          * Checks if Both Text boxes are filled out,
          * Finds selected player and selected team
-         * Performs Unenroll of current team if nessecery
+         * Performs Un enroll of current team if necessary
          * then Enrolls player to selected team
          **/
         private void enrollmentButton_Click(object sender, EventArgs e) {
@@ -331,7 +345,7 @@ namespace MainForm {
         /***
          * Enroll player
          * Adds player to team , And adds Team Name to player
-         * updates all listviews nessecery
+         * updates all list views necessary
          **/
         private void enrollPlayer(int playerToEnroll, int teamToEnroll) {
             listTeam[teamToEnroll].Players.Add(listPlayer[playerToEnroll].Name);
@@ -344,10 +358,10 @@ namespace MainForm {
         }
 
         /***
-         * Unenroll player
+         * Un enroll player
          * Finds players current team.
          * Removes player from team,
-         * updates team listview
+         * updates team list view
          **/
         private void unenrollPlayer(Player playerToUnenroll) {
             for (byte i = 0; i < listTeam.Count; i++) {
@@ -362,7 +376,7 @@ namespace MainForm {
 
         /***
          * When search button is clicked
-         * Clears search listview
+         * Clears search list view
          * Calls SearchAge or SearchBirthAddress according to which radio button is selected
          **/
         private void searchButton_Click(object sender, EventArgs e) {
@@ -382,7 +396,7 @@ namespace MainForm {
         /***
          * Search Age
          * Uses LinQ query to find all players in listPlayer with search age
-         * Adds all selected players to search Listview
+         * Adds all selected players to search List view
          **/
         private void searchAge() {
             int searchAge = Convert.ToInt32(searchTextBox.Text);
@@ -401,7 +415,7 @@ namespace MainForm {
       /***
        * Search Birth Place
        * Uses LinQ query to find all players in listPlayer with search birth Place
-       * Adds all selected players to search Listview
+       * Adds all selected players to search List view
        **/
         private void searchBirthAddress() {
             string searchLocation = searchTextBox.Text.ToLower();
@@ -418,9 +432,9 @@ namespace MainForm {
         }
 
         /***
-         * When teamListview index is selected
+         * When team List view index is selected
          * clears previous player details
-         * Updates Player listview on team tab
+         * Updates Player list view on team tab
          * to display players appropriate for selected team
          **/
         private void teamListView_SelectedIndexChanged(object sender, EventArgs e) {
@@ -443,9 +457,9 @@ namespace MainForm {
         }
 
         /***
-         * When playerListview index is selected
+         * When player List view index is selected
          * Clears previous details
-         * Updates tean listview on player tab
+         * Updates team list view on player tab
          * to display team details appropriate for selected player
          **/
         private void playerListView_SelectedIndexChanged(object sender, EventArgs e) {
@@ -461,8 +475,8 @@ namespace MainForm {
                         from x in listTeam
                         where x.Name == playerSelected
                         select x;
-                    
-                    foreach(Team x in playersTeamQuery) {
+
+                    foreach (Team x in playersTeamQuery) {
                         playerTeamNameTextBox.Text = x.Name;
                         playerTeamGroundTextBox.Text = x.Ground;
                         playerTeamCoachTextBox.Text = x.Coach;
@@ -477,7 +491,7 @@ namespace MainForm {
 
         /***
          * When Age button on chart page is selected
-         * Hides HeightvsWeight Chart
+         * Hides Height vs Weight Chart
          * And shows AgeChart
          **/
         private void ageHistogramButton_CheckedChanged(object sender, EventArgs e) {
@@ -489,7 +503,7 @@ namespace MainForm {
         }
 
         /***
-         * When HeightvsWeight button on chart page is selected
+         * When Height vs Weight button on chart page is selected
          * Hides AgeChart
          * and shows Height vs weight chart
          **/

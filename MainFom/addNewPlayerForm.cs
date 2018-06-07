@@ -220,7 +220,7 @@ namespace AddNewPlayerForm {
         
         /***
          * Calculates if passed year is a LeapYear
-         * return true if Leapyear
+         * return true if Leap year
          * else return false
          **/
         private bool isLeapyear(int _year) {
