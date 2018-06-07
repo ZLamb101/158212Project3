@@ -32,7 +32,7 @@ namespace AddNewPlayerForm {
          * checks all input validation
          * if fail display appropriate error message
          * if pass converts date string into datetime
-         * and adds players to listPlayer in mForm
+         * and adds players to mlistPlayer in mForm
          * closes ActiveForm
          **/
         private void AddPlayerButton_Click(object sender, EventArgs e) {         
@@ -47,6 +47,7 @@ namespace AddNewPlayerForm {
                                 addPlayerBirthPlaceTextBox.Text, addPlayerTeamNameTextBox.Text);
 
                     mform.listPlayer.Add(tempPlayer);
+             
                     foreach (Team x in mform.listTeam) {
                         if (x.Name == addPlayerTeamNameTextBox.Text) {
                             x.Players.Add(addPlayerFNameTextBox.Text + " " + addPlayerLNameTextBox.Text);
@@ -139,6 +140,7 @@ namespace AddNewPlayerForm {
          * else returns false(it passed)
          **/
         private bool validateTeamName() {
+            if (addPlayerTeamNameTextBox.Text == "") return false;
             foreach (Team x in mform.listTeam) {
                 if (x.Name.ToLower() == addPlayerTeamNameTextBox.Text.ToLower()) {
                     return false;

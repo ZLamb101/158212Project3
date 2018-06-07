@@ -256,6 +256,7 @@
             // 
             this.enrollTeamListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.teamEnrollmentHeader});
+            this.enrollTeamListView.FullRowSelect = true;
             this.enrollTeamListView.GridLines = true;
             this.enrollTeamListView.Location = new System.Drawing.Point(802, 71);
             this.enrollTeamListView.Name = "enrollTeamListView";
@@ -275,6 +276,7 @@
             this.enrollPlayerListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
+            this.enrollPlayerListView.FullRowSelect = true;
             this.enrollPlayerListView.GridLines = true;
             this.enrollPlayerListView.Location = new System.Drawing.Point(40, 71);
             this.enrollPlayerListView.Name = "enrollPlayerListView";
@@ -756,7 +758,7 @@
             this.ageChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.ageChart.Legends.Add(legend1);
-            this.ageChart.Location = new System.Drawing.Point(71, 72);
+            this.ageChart.Location = new System.Drawing.Point(81, 72);
             this.ageChart.Name = "ageChart";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -797,6 +799,9 @@
             // 
             // HeightvsWeightChart
             // 
+            chartArea2.AxisX.Interval = 1D;
+            chartArea2.AxisX.IsLabelAutoFit = false;
+            chartArea2.AxisX.LabelStyle.Angle = 90;
             chartArea2.AxisX.Title = "Players";
             chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartArea2.AxisY.Title = "Value(cm/kg)";

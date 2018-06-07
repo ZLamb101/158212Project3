@@ -101,6 +101,10 @@ namespace AddNewTeamForm {
                 MessageBox.Show("Year Founded Input is invalid", "Invalid Year", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
+            if (Convert.ToInt32(addTeamYearFoundedTextBox.Text) > DateTime.Now.Year) {
+                MessageBox.Show("Incorrect Founded Year Value", "Founded Year Value", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
             return false;
         }
 
