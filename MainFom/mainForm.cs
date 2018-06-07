@@ -12,14 +12,15 @@ using AddNewPlayerForm;
 using AddNewTeamForm;
 using Assignment3;
 
+
 namespace MainForm {
     public partial class mainForm : Form {
 
         public RugbyUnion rugbyUnion = new RugbyUnion(); //
         public List<Team> listTeam = new List<Team>();          //< listTeam , a List of teams which represents all rugby team
-        public List<Player> listPlayer = new List<Player>();    ///< listPlayer, a list of players which represents all players
+        public List<Player> listPlayer = new List<Player>();    //< listPlayer, a list of players which represents all players
 
-        Dictionary<string, int> ageCount = new Dictionary<string, int>   //< ageCount, Dictionary to hold each count for age histogram
+        Dictionary<string, byte> ageCount = new Dictionary<string, byte>   //< ageCount, Dictionary to hold each count for age histogram
                 {
                     {"0-10", 0},
                     {"10-20", 0},
@@ -39,7 +40,7 @@ namespace MainForm {
         }
 
         /***
-         * Opens and Loads a file
+         * Opens and Loads a team file
          * Validates the file and reads into listTeam 
          **/
         private void teamsToolLoad_Click(object sender, EventArgs e) {
@@ -78,7 +79,7 @@ namespace MainForm {
 
         /***
          * Passes a warning if Teams have not been loaded in
-        * Opens and Loads a file
+        * Opens and Loads a  player file
         * Validates the file and reads into listPlayer
         **/
         private void playersToolLoad_Click(object sender, EventArgs e) {
@@ -171,13 +172,14 @@ namespace MainForm {
 
             HeightvsWeightChart.Series["Height"].Points.AddXY(tempPlayer.Name, tempPlayer.Height);
             HeightvsWeightChart.Series["Weight"].Points.AddXY(tempPlayer.Name, tempPlayer.Weight);
-         
-            if (tempPlayer.getAge() < 10) ageCount["0-10"]++;
-            else if (tempPlayer.getAge() < 20) ageCount["10-20"]++;
-            else if (tempPlayer.getAge() < 30) ageCount["20-30"]++;
-            else if (tempPlayer.getAge() < 40) ageCount["30-40"]++;
-            else if (tempPlayer.getAge() < 50) ageCount["40-50"]++;
-            else if (tempPlayer.getAge() < 60) ageCount["50-60"]++;
+
+            
+            if (tempPlayer.Age < 10) ageCount["0-10"]++;
+            else if (tempPlayer.Age < 20) ageCount["10-20"]++;
+            else if (tempPlayer.Age < 30) ageCount["20-30"]++;
+            else if (tempPlayer.Age < 40) ageCount["30-40"]++;
+            else if (tempPlayer.Age < 50) ageCount["40-50"]++;
+            else if (tempPlayer.Age < 60) ageCount["50-60"]++;
             else ageCount["60+"]++;
             updateAgeChart();
         }
@@ -385,7 +387,7 @@ namespace MainForm {
 
             IEnumerable<Player> playerAgeListQuery =
                 from i in listPlayer
-                where i.getAge() == searchAge
+                where i.Age == searchAge
                 select i;
 
             foreach (Player x in playerAgeListQuery) {

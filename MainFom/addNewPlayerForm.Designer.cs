@@ -86,11 +86,11 @@
             // addPlayerBirthDateLabel
             // 
             this.addPlayerBirthDateLabel.AutoSize = true;
-            this.addPlayerBirthDateLabel.Location = new System.Drawing.Point(237, 254);
+            this.addPlayerBirthDateLabel.Location = new System.Drawing.Point(223, 254);
             this.addPlayerBirthDateLabel.Name = "addPlayerBirthDateLabel";
-            this.addPlayerBirthDateLabel.Size = new System.Drawing.Size(90, 17);
+            this.addPlayerBirthDateLabel.Size = new System.Drawing.Size(178, 17);
             this.addPlayerBirthDateLabel.TabIndex = 4;
-            this.addPlayerBirthDateLabel.Text = "Date Of Birth";
+            this.addPlayerBirthDateLabel.Text = "Date Of Birth (dd/mm/yyyy)\r\n";
             // 
             // addPlayerHeightLabel
             // 

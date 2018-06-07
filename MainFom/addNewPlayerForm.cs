@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using Assignment3;
 using MainForm;
 
@@ -20,6 +21,7 @@ namespace AddNewPlayerForm {
         public addNewPlayerForm(mainForm _form) {
             InitializeComponent();
             mform = _form;
+            
         }
 
         private mainForm mform;     //< mForm, Holds parent form
@@ -123,7 +125,7 @@ namespace AddNewPlayerForm {
             if (mform.hasEmptyLine(addPlayerBirthPlaceTextBox.Text, "Birth Place")) return true;
             if (mform.hasTooManyChars(addPlayerBirthPlaceTextBox.Text, "Birth Place")) return true;
             foreach (char x in addPlayerBirthPlaceTextBox.Text.ToLower()) {
-                if ((x < 'a' || x > 'z') && (x != ' ' || x != ',')) {
+                if ((x < 'a' || x > 'z') && (x != ' ' && x != ',')) {
                     MessageBox.Show("Birth Place found incorrect character\nonly (a-z, A-Z) are acceptable values", "Incorrect Character Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return true;
                 }
@@ -210,7 +212,7 @@ namespace AddNewPlayerForm {
                     return true;
             }
             if (year > DateTime.Now.Year) {
-                MessageBox.Show("Incorrect Year Value", "Incorrect Year Value", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Incorrect Year Value", "Year Value", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
             }
             return false;
