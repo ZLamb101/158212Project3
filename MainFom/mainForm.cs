@@ -16,7 +16,7 @@ using Assignment3;
 namespace MainForm {
     public partial class mainForm : Form {
 
-        public RugbyUnion rugbyUnion = new RugbyUnion(); //
+        public RugbyUnion rugbyUnion = new RugbyUnion(); //< do i even want to keep this tho !!!!!!!!!!!!!!!!!!!
         public List<Team> listTeam = new List<Team>();          //< listTeam , a List of teams which represents all rugby team
         public List<Player> listPlayer = new List<Player>();    //< listPlayer, a list of players which represents all players
 
@@ -33,6 +33,7 @@ namespace MainForm {
 
 
         /***
+         *  Constructor
          *  Initializes the Form
          **/
         public mainForm() {
@@ -183,6 +184,7 @@ namespace MainForm {
             else ageCount["60+"]++;
             updateAgeChart();
         }
+
 
         /***
         * Takes a Team in params and adds it to related listviews
