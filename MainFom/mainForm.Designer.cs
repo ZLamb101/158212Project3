@@ -23,15 +23,15 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openTool = new System.Windows.Forms.ToolStripMenuItem();
@@ -213,7 +213,7 @@
             // teamSelectedEnrollmentLabel
             // 
             this.teamSelectedEnrollmentLabel.AutoSize = true;
-            this.teamSelectedEnrollmentLabel.Location = new System.Drawing.Point(512, 245);
+            this.teamSelectedEnrollmentLabel.Location = new System.Drawing.Point(540, 247);
             this.teamSelectedEnrollmentLabel.Name = "teamSelectedEnrollmentLabel";
             this.teamSelectedEnrollmentLabel.Size = new System.Drawing.Size(103, 17);
             this.teamSelectedEnrollmentLabel.TabIndex = 8;
@@ -222,7 +222,7 @@
             // playerSelectedEnrollmentLabel
             // 
             this.playerSelectedEnrollmentLabel.AutoSize = true;
-            this.playerSelectedEnrollmentLabel.Location = new System.Drawing.Point(508, 151);
+            this.playerSelectedEnrollmentLabel.Location = new System.Drawing.Point(540, 149);
             this.playerSelectedEnrollmentLabel.Name = "playerSelectedEnrollmentLabel";
             this.playerSelectedEnrollmentLabel.Size = new System.Drawing.Size(107, 17);
             this.playerSelectedEnrollmentLabel.TabIndex = 7;
@@ -230,21 +230,21 @@
             // 
             // teamSelectedEnrollmentTextBox
             // 
-            this.teamSelectedEnrollmentTextBox.Location = new System.Drawing.Point(484, 286);
+            this.teamSelectedEnrollmentTextBox.Location = new System.Drawing.Point(511, 289);
             this.teamSelectedEnrollmentTextBox.Name = "teamSelectedEnrollmentTextBox";
             this.teamSelectedEnrollmentTextBox.Size = new System.Drawing.Size(179, 22);
             this.teamSelectedEnrollmentTextBox.TabIndex = 6;
             // 
             // playerSelectedEnrollmentTextBox
             // 
-            this.playerSelectedEnrollmentTextBox.Location = new System.Drawing.Point(484, 197);
+            this.playerSelectedEnrollmentTextBox.Location = new System.Drawing.Point(511, 197);
             this.playerSelectedEnrollmentTextBox.Name = "playerSelectedEnrollmentTextBox";
             this.playerSelectedEnrollmentTextBox.Size = new System.Drawing.Size(179, 22);
             this.playerSelectedEnrollmentTextBox.TabIndex = 5;
             // 
             // enrollmentButton
             // 
-            this.enrollmentButton.Location = new System.Drawing.Point(503, 359);
+            this.enrollmentButton.Location = new System.Drawing.Point(531, 354);
             this.enrollmentButton.Name = "enrollmentButton";
             this.enrollmentButton.Size = new System.Drawing.Size(140, 39);
             this.enrollmentButton.TabIndex = 4;
@@ -280,7 +280,7 @@
             this.enrollPlayerListView.GridLines = true;
             this.enrollPlayerListView.Location = new System.Drawing.Point(40, 71);
             this.enrollPlayerListView.Name = "enrollPlayerListView";
-            this.enrollPlayerListView.Size = new System.Drawing.Size(313, 465);
+            this.enrollPlayerListView.Size = new System.Drawing.Size(386, 465);
             this.enrollPlayerListView.TabIndex = 2;
             this.enrollPlayerListView.UseCompatibleStateImageBehavior = false;
             this.enrollPlayerListView.View = System.Windows.Forms.View.Details;
@@ -748,29 +748,29 @@
             // 
             // ageChart
             // 
-            chartArea1.AxisX.Title = "Age Range(Years)";
-            chartArea1.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.AxisY.Interval = 1D;
-            chartArea1.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
-            chartArea1.AxisY.Title = "Count";
-            chartArea1.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea1.Name = "ChartArea1";
-            this.ageChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.ageChart.Legends.Add(legend1);
+            chartArea3.AxisX.Title = "Age Range(Years)";
+            chartArea3.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.AxisY.Interval = 1D;
+            chartArea3.AxisY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea3.AxisY.Title = "Count";
+            chartArea3.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea3.Name = "ChartArea1";
+            this.ageChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.ageChart.Legends.Add(legend3);
             this.ageChart.Location = new System.Drawing.Point(81, 72);
             this.ageChart.Name = "ageChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Age";
-            this.ageChart.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Age";
+            this.ageChart.Series.Add(series4);
             this.ageChart.Size = new System.Drawing.Size(1068, 488);
             this.ageChart.TabIndex = 3;
             this.ageChart.Text = "Age Histogram";
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title1.Name = "Title1";
-            title1.Text = "Histogram of Players Ages";
-            this.ageChart.Titles.Add(title1);
+            title3.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title3.Name = "Title1";
+            title3.Text = "Histogram of Players Ages";
+            this.ageChart.Titles.Add(title3);
             this.ageChart.Visible = false;
             // 
             // ageHistogramButton
@@ -799,34 +799,34 @@
             // 
             // HeightvsWeightChart
             // 
-            chartArea2.AxisX.Interval = 1D;
-            chartArea2.AxisX.IsLabelAutoFit = false;
-            chartArea2.AxisX.LabelStyle.Angle = 90;
-            chartArea2.AxisX.Title = "Players";
-            chartArea2.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.AxisY.Title = "Value(cm/kg)";
-            chartArea2.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartArea2.Name = "ChartArea1";
-            this.HeightvsWeightChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.HeightvsWeightChart.Legends.Add(legend2);
+            chartArea4.AxisX.Interval = 1D;
+            chartArea4.AxisX.IsLabelAutoFit = false;
+            chartArea4.AxisX.LabelStyle.Angle = 90;
+            chartArea4.AxisX.Title = "Players";
+            chartArea4.AxisX.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.AxisY.Title = "Value(cm/kg)";
+            chartArea4.AxisY.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartArea4.Name = "ChartArea1";
+            this.HeightvsWeightChart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.HeightvsWeightChart.Legends.Add(legend4);
             this.HeightvsWeightChart.Location = new System.Drawing.Point(96, 72);
             this.HeightvsWeightChart.Name = "HeightvsWeightChart";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Height";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Weight";
-            this.HeightvsWeightChart.Series.Add(series2);
-            this.HeightvsWeightChart.Series.Add(series3);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Height";
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Weight";
+            this.HeightvsWeightChart.Series.Add(series5);
+            this.HeightvsWeightChart.Series.Add(series6);
             this.HeightvsWeightChart.Size = new System.Drawing.Size(1079, 488);
             this.HeightvsWeightChart.TabIndex = 0;
             this.HeightvsWeightChart.Text = "HeightvsWeightChart";
-            title2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            title2.Name = "HeightWeightChartTitle";
-            title2.Text = "Height and Weight of Players";
-            this.HeightvsWeightChart.Titles.Add(title2);
+            title4.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            title4.Name = "HeightWeightChartTitle";
+            title4.Text = "Height and Weight of Players";
+            this.HeightvsWeightChart.Titles.Add(title4);
             // 
             // mainForm
             // 

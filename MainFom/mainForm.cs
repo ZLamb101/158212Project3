@@ -72,7 +72,7 @@ namespace MainForm {
                     FileStream fs = File.Open(ofd.FileName, FileMode.Open);
                     StreamReader reader = new StreamReader(fs);
                                       
-                    while (reader.Peek() >= 0) {
+                    while (reader.Peek() > -1) {
                         string line;
                         line = reader.ReadLine();                      
                         mAllTeams.Add(StringToTeam(line));
@@ -90,11 +90,11 @@ namespace MainForm {
          * Reads it into a Team and adds to list views
          * returns the created Team
          **/
-        private Team StringToTeam(string line) {            
-            List<string> words = new List<string>(line.Split(';'));
-            if (words.Count != 5) throw new FileLoadException();
+        private Team StringToTeam(string line) {
+            string[] words = (line.Split(';'));
+            if (words.Length != 5) throw new FileLoadException();
             Team tempTeam = new Team(words[0], words[1], words[2], Convert.ToInt32(words[3]), words[4]);
-
+           
             NewTeamUpdate(tempTeam);
             return tempTeam;
         }
@@ -115,7 +115,7 @@ namespace MainForm {
                     FileStream fs = File.Open(ofd.FileName, FileMode.Open);
                     StreamReader reader = new StreamReader(fs);
                     
-                    while (reader.Peek() >= 0) {
+                    while (reader.Peek() > -1) {
                         string line;
                         line = reader.ReadLine();
                         mAllPlayers.Add(StringToPlayer(line));
@@ -139,10 +139,10 @@ namespace MainForm {
          * returns the created Player
          **/
         private Player StringToPlayer(string line) {
-            List<string> words = new List<string>(line.Split(';'));
-            if (words.Count < 6) throw new FileLoadException();
+            string[] words = (line.Split(';'));
+            if (words.Length < 6) throw new FileLoadException();
             Player tempPlayer;
-            if(words.Count == 6) {
+            if(words.Length == 6) {
                 tempPlayer = new Player(words[0], words[1], Convert.ToDateTime(words[2]), Convert.ToInt32(words[3]), Convert.ToInt32(words[4]), words[5]);
             } else {
                 tempPlayer = new Player(words[0], words[1], Convert.ToDateTime(words[2]), Convert.ToInt32(words[3]), Convert.ToInt32(words[4]), words[5], words[6]);
@@ -171,7 +171,7 @@ namespace MainForm {
         * adds Height, weight and age to necessary place for charts
         **/
         private void NewPlayerUpdate(Player tempPlayer) {
-            ListViewItem item = new ListViewItem(new[] { tempPlayer.ID, tempPlayer.Name, Convert.ToString(tempPlayer.BirthDate), Convert.ToString(tempPlayer.Height), Convert.ToString(tempPlayer.Weight), tempPlayer.BirthPlace, tempPlayer.TeamName });
+            ListViewItem item = new ListViewItem(new[] { tempPlayer.ID, tempPlayer.Name, Convert.ToString(tempPlayer.BirthDate.Date), Convert.ToString(tempPlayer.Height), Convert.ToString(tempPlayer.Weight), tempPlayer.BirthPlace, tempPlayer.TeamName });
             playerListView.Items.Add(item);
 
             ListViewItem item2 = new ListViewItem(new[] { tempPlayer.Name, tempPlayer.TeamName });
@@ -277,12 +277,12 @@ namespace MainForm {
          * if player is added update list view
          **/
         private void GotoAddPlayerButton_Click(object sender, EventArgs e) {
-            int i = mAllPlayers.Count - 1;
-            AddNewPlayerForm.AddNewPlayerForm form2 = new AddNewPlayerForm.AddNewPlayerForm(this);
-            form2.ShowDialog();
+            int i = mAllPlayers.Count;
+            AddNewPlayerForm.AddNewPlayerForm addPlayerForm = new AddNewPlayerForm.AddNewPlayerForm(this);
+            addPlayerForm.ShowDialog();
             
-            if (mAllPlayers.Count - 1 != i) {          
-                NewPlayerUpdate(mAllPlayers[i+1]);
+            if (mAllPlayers.Count != i) {          
+                NewPlayerUpdate(mAllPlayers[i+2]);
             }
 
         }
@@ -293,12 +293,12 @@ namespace MainForm {
         * if team is added update list view
         **/
         private void GotoAddTeamButton_Click(object sender, EventArgs e) {
-            int i = mAllTeams.Count - 1;
-            AddNewTeamForm.AddNewTeamForm form2 = new AddNewTeamForm.AddNewTeamForm(this);
-            form2.ShowDialog();
+            int i = mAllTeams.Count;
+            AddNewTeamForm.AddNewTeamForm addTeamForm = new AddNewTeamForm.AddNewTeamForm(this);
+            addTeamForm.ShowDialog();
             
-            if (mAllTeams.Count - 1 != i) {              
-                NewTeamUpdate(mAllTeams[i+1]);
+            if (mAllTeams.Count != i) {              
+                NewTeamUpdate(mAllTeams[i+2]);
             }
         }
 
@@ -358,14 +358,14 @@ namespace MainForm {
          * Adds player to team , And adds Team Name to player
          * updates all list views necessary
          **/
-        private void EnrollPlayer(int playerToEnroll, int teamToEnroll) {
-            mAllTeams[teamToEnroll].Players.Add(mAllPlayers[playerToEnroll].Name);
-            mAllPlayers[playerToEnroll].TeamName = mAllTeams[teamToEnroll].Name;
+        private void EnrollPlayer(int playerIndex, int teamIndex) {
+            mAllTeams[teamIndex].Players.Add(mAllPlayers[playerIndex].Name);
+            mAllPlayers[playerIndex].TeamName = mAllTeams[teamIndex].Name;
                               
-            enrollPlayerListView.Items[playerToEnroll] = new ListViewItem(new[] { mAllPlayers[playerToEnroll].Name, mAllPlayers[playerToEnroll].TeamName });
-            playerListView.Items[playerToEnroll] = new ListViewItem(new[] { mAllPlayers[playerToEnroll].ID, mAllPlayers[playerToEnroll].Name, Convert.ToString(mAllPlayers[playerToEnroll].BirthDate), Convert.ToString(mAllPlayers[playerToEnroll].Height), Convert.ToString(mAllPlayers[playerToEnroll].Weight), mAllPlayers[playerToEnroll].BirthPlace, mAllPlayers[playerToEnroll].TeamName });
+            enrollPlayerListView.Items[playerIndex] = new ListViewItem(new[] { mAllPlayers[playerIndex].Name, mAllPlayers[playerIndex].TeamName });
+            playerListView.Items[playerIndex] = new ListViewItem(new[] { mAllPlayers[playerIndex].ID, mAllPlayers[playerIndex].Name, Convert.ToString(mAllPlayers[playerIndex].BirthDate), Convert.ToString(mAllPlayers[playerIndex].Height), Convert.ToString(mAllPlayers[playerIndex].Weight), mAllPlayers[playerIndex].BirthPlace, mAllPlayers[playerIndex].TeamName });
             
-            teamListView.Items[teamToEnroll] = new ListViewItem(new[] { mAllTeams[teamToEnroll].Name, mAllTeams[teamToEnroll].Ground, mAllTeams[teamToEnroll].Coach, Convert.ToString(mAllTeams[teamToEnroll].YearFounded), mAllTeams[teamToEnroll].Region });
+            teamListView.Items[teamIndex] = new ListViewItem(new[] { mAllTeams[teamIndex].Name, mAllTeams[teamIndex].Ground, mAllTeams[teamIndex].Coach, Convert.ToString(mAllTeams[teamIndex].YearFounded), mAllTeams[teamIndex].Region });
         }
 
         /***
@@ -449,22 +449,25 @@ namespace MainForm {
          * to display players appropriate for selected team
          **/
         private void TeamListView_SelectedIndexChanged(object sender, EventArgs e) {
-            teamPlayersListView.Items.Clear();
-            for(byte i = 0; i < mAllTeams.Count; i++) {
-                if (teamListView.Items[i].Selected) {
-                    string teamSelected = mAllTeams[i].Name;
-                    IEnumerable<Player> listOfTeamPlayersQuery =
-                        from x in mAllPlayers
-                        where x.TeamName == teamSelected
-                        select x;
+            try {
+                teamPlayersListView.Items.Clear();
+                for (byte i = 0; i < mAllTeams.Count; i++) {
+                    if (teamListView.Items[i].Selected) {
+                        IEnumerable<Player> listOfTeamPlayersQuery =
+                            from x in mAllPlayers
+                            where x.TeamName == mAllTeams[i].Name
+                            select x;
 
-                    foreach (Player x in listOfTeamPlayersQuery) {
-                        ListViewItem item = new ListViewItem(new[] {x.ID, x.Name, Convert.ToString(x.BirthDate), Convert.ToString(x.Height), Convert.ToString(x.Weight), x.BirthPlace });
-                        teamPlayersListView.Items.Add(item);
+
+                        foreach (Player x in listOfTeamPlayersQuery) {
+                            ListViewItem item = new ListViewItem(new[] { x.ID, x.Name, Convert.ToString(x.BirthDate), Convert.ToString(x.Height), Convert.ToString(x.Weight), x.BirthPlace });
+                            teamPlayersListView.Items.Add(item);
+                        }
+                        break;
                     }
-                    break;
                 }
             }
+            catch { }
         }
 
         /***
@@ -474,30 +477,37 @@ namespace MainForm {
          * to display team details appropriate for selected player
          **/
         private void PlayerListView_SelectedIndexChanged(object sender, EventArgs e) {
+            try {
+                clearPlayerTeamDetails();
+                for (byte i = 0; i < mAllPlayers.Count; i++) {
+                    if (playerListView.Items[i].Selected) {
+                        IEnumerable<Team> playersTeamQuery =
+                            from x in mAllTeams
+                            where x.Name == mAllPlayers[i].TeamName
+                            select x;
+
+                        updatePlayerTeamDetails(playersTeamQuery.First());
+                        break;
+                    }
+                }
+            }
+            catch { }
+        }
+
+        private void updatePlayerTeamDetails(Team x) {
+            playerTeamNameTextBox.Text = x.Name;
+            playerTeamGroundTextBox.Text = x.Ground;
+            playerTeamCoachTextBox.Text = x.Coach;
+            playerTeamYearFoundedTextBox.Text = Convert.ToString(x.YearFounded);
+            playerTeamRegionTextBox.Text = x.Region;
+        }
+
+        private void clearPlayerTeamDetails() {
             playerTeamNameTextBox.Text = "";
             playerTeamGroundTextBox.Text = "";
             playerTeamCoachTextBox.Text = "";
             playerTeamYearFoundedTextBox.Text = "";
             playerTeamRegionTextBox.Text = "";
-            for (byte i=0; i < mAllPlayers.Count; i++) {
-                if (playerListView.Items[i].Selected){
-                    string playerSelected = mAllPlayers[i].TeamName;
-                    IEnumerable<Team> playersTeamQuery =
-                        from x in mAllTeams
-                        where x.Name == playerSelected
-                        select x;
-
-                    foreach (Team x in playersTeamQuery) {
-                        playerTeamNameTextBox.Text = x.Name;
-                        playerTeamGroundTextBox.Text = x.Ground;
-                        playerTeamCoachTextBox.Text = x.Coach;
-                        playerTeamYearFoundedTextBox.Text = Convert.ToString(x.YearFounded);
-                        playerTeamRegionTextBox.Text = x.Region;
-
-                    }
-                    break;
-                }
-            }
         }
 
         /***
