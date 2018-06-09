@@ -88,7 +88,7 @@ namespace Assignment3 {
         * writes the name,ground,coach,yf,region data members into a string for save file format
         * returns string
         **/
-        public string saveString() {
+        public string SaveString() {
             string teamString;
             teamString = mName + ";" + mGround + ";" + mCoach + ";" + mYearFounded + ";" + mRegion;          
             return teamString;
@@ -121,7 +121,7 @@ namespace Assignment3 {
             mHeight = _Height;
             mWeight = _Weight;
             mBirthPlace = _BirthPlace;
-            calcAge();
+            CalcAge();
         }
 
 
@@ -138,7 +138,7 @@ namespace Assignment3 {
             mWeight = _Weight;
             mBirthPlace = _BirthPlace;
             mTeamName = _TeamName;
-            calcAge();
+            CalcAge();
         }
 
         /***
@@ -208,7 +208,7 @@ namespace Assignment3 {
         * writes the id,name,dob,weight,height,birthplace data members into a string for save file format
         * returns string
         **/
-        public string saveString() {
+        public string SaveString() {
             string playerString;
             playerString = mID + ";" + mName + ";" + mBirthDate + ";" + mHeight + ";" + mWeight + ";" + mBirthPlace;
             if (mTeamName != "") {
@@ -223,7 +223,7 @@ namespace Assignment3 {
          * compares date with players birth date to calculate players age
          * saves players age in mAge
          **/
-        private void calcAge() {
+        private void CalcAge() {
             // Save today's date.
             DateTime today = DateTime.Today;
             // Calculate the age.

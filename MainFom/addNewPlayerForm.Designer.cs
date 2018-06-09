@@ -1,5 +1,5 @@
 ﻿namespace AddNewPlayerForm {
-    partial class addNewPlayerForm {
+    partial class AddNewPlayerForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>

@@ -17,16 +17,16 @@ namespace MainForm {
     public partial class mainForm : Form {
 
 
-        private List<Team> mlistTeam;          //< listTeam , a List of teams which represents all rugby team
-        private List<Player> mlistPlayer;    //< listPlayer, a list of players which represents all players
+        private List<Team> mlistTeam;          //< ListTeam , a List of teams which represents all rugby team
+        private List<Player> mlistPlayer;    //< ListPlayer, a list of players which represents all players
         private Dictionary<string, byte> ageCount;   //< ageCount, Dictionary to hold each count for age histogram
                 
-        public List<Team> listTeam {
+        public List<Team> ListTeam {
             get { return mlistTeam; }
             set { mlistTeam = value; }
         }
 
-        public List<Player> listPlayer {
+        public List<Player> ListPlayer {
             get { return mlistPlayer; }
             set { mlistPlayer = value; }
         }
@@ -59,7 +59,7 @@ namespace MainForm {
          * Opens and Loads a team file
          * Validates the file and reads into mlistTeam 
          **/
-        private void teamsToolLoad_Click(object sender, EventArgs e) {
+        private void TeamsToolLoad_Click(object sender, EventArgs e) {
             try {
                 OpenFileDialog ofd = new OpenFileDialog();
                 if (ofd.ShowDialog() == DialogResult.OK) {
@@ -69,7 +69,7 @@ namespace MainForm {
                     while (reader.Peek() >= 0) {
                         string line;
                         line = reader.ReadLine();                      
-                        mlistTeam.Add(stringToTeam(line));
+                        mlistTeam.Add(StringToTeam(line));
                     }
                     reader.Close();
                 }
@@ -84,13 +84,12 @@ namespace MainForm {
          * Reads it into a Team and adds to list views
          * returns the created Team
          **/
-        private Team stringToTeam(string line) {            
-            List<string> tempTeamPlayerList = new List<string>();
+        private Team StringToTeam(string line) {            
             List<string> words = new List<string>(line.Split(';'));
             if (words.Count != 5) throw new FileLoadException();
             Team tempTeam = new Team(words[0], words[1], words[2], Convert.ToInt32(words[3]), words[4]);
 
-            newTeamUpdate(tempTeam);
+            NewTeamUpdate(tempTeam);
             return tempTeam;
         }
 
@@ -99,7 +98,7 @@ namespace MainForm {
         * Opens and Loads a  player file
         * Validates the file and reads into mlistPlayer
         **/
-        private void playersToolLoad_Click(object sender, EventArgs e) {
+        private void PlayersToolLoad_Click(object sender, EventArgs e) {
             if (mlistTeam.Count == 0) {
                 MessageBox.Show("Are you sure you want to load players before teams\nPlayers will be unassigned from their team if the\n team does not exist", "Loading Players Before Teams", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -113,7 +112,7 @@ namespace MainForm {
                     while (reader.Peek() >= 0) {
                         string line;
                         line = reader.ReadLine();
-                        mlistPlayer.Add(stringToPlayer(line));
+                        mlistPlayer.Add(StringToPlayer(line));
 
                     }
                     reader.Close();
@@ -133,7 +132,7 @@ namespace MainForm {
          * Reads it into a Player and adds to list views
          * returns the created Player
          **/
-        private Player stringToPlayer(string line) {
+        private Player StringToPlayer(string line) {
             List<string> words = new List<string>(line.Split(';'));
             if (words.Count < 6) throw new FileLoadException();
             Player tempPlayer;
@@ -155,7 +154,7 @@ namespace MainForm {
              for (byte i = 0; i < mlistPlayer.Count; i++) {
                 if (words[0] == mlistPlayer[i].ID) throw new FormatException(words[0]);                
              }
-             newPlayerUpdate(tempPlayer);
+             NewPlayerUpdate(tempPlayer);
  
             return tempPlayer;
         }
@@ -165,7 +164,7 @@ namespace MainForm {
         * and adds it to related list views
         * adds Height, weight and age to necessary place for charts
         **/
-        private void newPlayerUpdate(Player tempPlayer) {
+        private void NewPlayerUpdate(Player tempPlayer) {
             ListViewItem item = new ListViewItem(new[] { tempPlayer.ID, tempPlayer.Name, Convert.ToString(tempPlayer.BirthDate), Convert.ToString(tempPlayer.Height), Convert.ToString(tempPlayer.Weight), tempPlayer.BirthPlace, tempPlayer.TeamName });
             playerListView.Items.Add(item);
 
@@ -183,7 +182,7 @@ namespace MainForm {
             else if (tempPlayer.Age < 50) ageCount["40-50"]++;
             else if (tempPlayer.Age < 60) ageCount["50-60"]++;
             else ageCount["60+"]++;
-            updateAgeChart();
+            UpdateAgeChart();
         }
 
 
@@ -192,7 +191,7 @@ namespace MainForm {
         /***
         * Takes a Team in params and adds it to related list views
         **/
-        private void newTeamUpdate(Team tempTeam) {
+        private void NewTeamUpdate(Team tempTeam) {
             ListViewItem item = new ListViewItem(new[] { tempTeam.Name, tempTeam.Ground, tempTeam.Coach, Convert.ToString(tempTeam.YearFounded), tempTeam.Region});
             teamListView.Items.Add(item);
 
@@ -205,7 +204,7 @@ namespace MainForm {
         * Clears ageChart HistoGram
         * and re plots the histogram
         **/
-        private void updateAgeChart() {
+        private void UpdateAgeChart() {
             ageChart.Series["Age"].Points.Clear();
             
             ageChart.Series["Age"].Points.AddXY("0-10", ageCount["0-10"]);
@@ -224,10 +223,11 @@ namespace MainForm {
          * Opens a File Dialog
          * Writes Player information to designated file
          **/
-        private void playersToolSave_Click(object sender, EventArgs e) {
-            SaveFileDialog save = new SaveFileDialog();
-            save.FileName = "SavePlayerList.txt";
-            save.Filter = "Text File | *.txt";
+        private void PlayersToolSave_Click(object sender, EventArgs e) {
+            SaveFileDialog save = new SaveFileDialog {
+                FileName = "SavePlayerList.txt",
+                Filter = "Text File | *.txt"
+            };
             if (save.ShowDialog() == DialogResult.OK) {
                
                 FileStream fs;
@@ -236,7 +236,7 @@ namespace MainForm {
                 writer = new StreamWriter(fs);
                 
                 for (byte i = 0; i < mlistPlayer.Count; i++) {
-                    writer.WriteLine(mlistPlayer[i].saveString());
+                    writer.WriteLine(mlistPlayer[i].SaveString());
                 }
                 writer.Close();
             }
@@ -247,10 +247,11 @@ namespace MainForm {
          * Opens a File Dialog
          * Writes Team information to designated file
          **/
-        private void teamsToolSave_Click(object sender, EventArgs e) {
-            SaveFileDialog save = new SaveFileDialog();
-            save.FileName = "SaveTeamList.txt";
-            save.Filter = "Text File | *.txt";
+        private void TeamsToolSave_Click(object sender, EventArgs e) {
+            SaveFileDialog save = new SaveFileDialog {
+                FileName = "SaveTeamList.txt",
+                Filter = "Text File | *.txt"
+            };
             if (save.ShowDialog() == DialogResult.OK) {
                 FileStream fs;
                 fs = File.Create(save.FileName);
@@ -258,7 +259,7 @@ namespace MainForm {
                 writer = new StreamWriter(fs);
                 
                 for (byte i = 0; i < mlistTeam.Count; i++) {
-                    writer.WriteLine(mlistTeam[i].saveString());
+                    writer.WriteLine(mlistTeam[i].SaveString());
                 }
                 writer.Close();
             }
@@ -269,13 +270,13 @@ namespace MainForm {
          * Open Add new player tab
          * if player is added update list view
          **/
-        private void gotoAddPlayerButton_Click(object sender, EventArgs e) {
+        private void GotoAddPlayerButton_Click(object sender, EventArgs e) {
             int i = mlistPlayer.Count - 1;
-            addNewPlayerForm form2 = new addNewPlayerForm(this);
+            AddNewPlayerForm.AddNewPlayerForm form2 = new AddNewPlayerForm.AddNewPlayerForm(this);
             form2.ShowDialog();
             
             if (mlistPlayer.Count - 1 != i) {          
-                newPlayerUpdate(mlistPlayer[i+1]);
+                NewPlayerUpdate(mlistPlayer[i+1]);
             }
 
         }
@@ -285,13 +286,13 @@ namespace MainForm {
         * Open Add new team tab
         * if team is added update list view
         **/
-        private void gotoAddTeamButton_Click(object sender, EventArgs e) {
+        private void GotoAddTeamButton_Click(object sender, EventArgs e) {
             int i = mlistTeam.Count - 1;
-            addNewTeamForm form2 = new addNewTeamForm(this);
+            AddNewTeamForm.AddNewTeamForm form2 = new AddNewTeamForm.AddNewTeamForm(this);
             form2.ShowDialog();
             
             if (mlistTeam.Count - 1 != i) {              
-                newTeamUpdate(mlistTeam[i+1]);
+                NewTeamUpdate(mlistTeam[i+1]);
             }
         }
 
@@ -300,7 +301,7 @@ namespace MainForm {
          * On Enroll tab
          * If a Player index is selected displays selected index in the appropriate textbox
          **/
-        private void enrollPlayerListView_SelectedIndexChanged(object sender, EventArgs e) {
+        private void EnrollPlayerListView_SelectedIndexChanged(object sender, EventArgs e) {
             for (byte i = 0; i < mlistPlayer.Count; i++) {
                 if (enrollPlayerListView.Items[i].Selected) {
                     playerSelectedEnrollmentTextBox.Text = mlistPlayer[i].Name;
@@ -313,7 +314,7 @@ namespace MainForm {
         * On Enroll tab
         * If a Team index is selected displays selected index in the appropriate textbox
         **/
-        private void enrollTeamListView_SelectedIndexChanged(object sender, EventArgs e) {
+        private void EnrollTeamListView_SelectedIndexChanged(object sender, EventArgs e) {
             for (byte i = 0; i < mlistTeam.Count; i++) {
                 if (enrollTeamListView.Items[i].Selected) {
                     teamSelectedEnrollmentTextBox.Text = mlistTeam[i].Name;
@@ -331,7 +332,7 @@ namespace MainForm {
          * Performs Un enroll of current team if necessary
          * then Enrolls player to selected team
          **/
-        private void enrollmentButton_Click(object sender, EventArgs e) {
+        private void EnrollmentButton_Click(object sender, EventArgs e) {
             if (playerSelectedEnrollmentTextBox.Text != "" && teamSelectedEnrollmentTextBox.Text != "") {
                 for (byte i = 0; i < mlistPlayer.Count; i++) {
                     if (playerSelectedEnrollmentTextBox.Text == mlistPlayer[i].Name) {                   
@@ -339,10 +340,10 @@ namespace MainForm {
                             if (teamSelectedEnrollmentTextBox.Text == mlistTeam[j].Name) {
 
                                 if (mlistPlayer[i].TeamName != "") {
-                                    unenrollPlayer(mlistPlayer[i]);
+                                    UnenrollPlayer(mlistPlayer[i]);
                                 }
 
-                                enrollPlayer(i,j);
+                                EnrollPlayer(i,j);
                                 break;
                             }
                         }
@@ -358,7 +359,7 @@ namespace MainForm {
          * Adds player to team , And adds Team Name to player
          * updates all list views necessary
          **/
-        private void enrollPlayer(int playerToEnroll, int teamToEnroll) {
+        private void EnrollPlayer(int playerToEnroll, int teamToEnroll) {
             mlistTeam[teamToEnroll].Players.Add(mlistPlayer[playerToEnroll].Name);
             mlistPlayer[playerToEnroll].TeamName = mlistTeam[teamToEnroll].Name;
                               
@@ -374,7 +375,7 @@ namespace MainForm {
          * Removes player from team,
          * updates team list view
          **/
-        private void unenrollPlayer(Player playerToUnenroll) {
+        private void UnenrollPlayer(Player playerToUnenroll) {
             for (byte i = 0; i < mlistTeam.Count; i++) {
                 if (mlistTeam[i].Name == playerToUnenroll.TeamName) {
                     mlistTeam[i].Players.Remove(playerToUnenroll.Name);
@@ -390,12 +391,12 @@ namespace MainForm {
          * Clears search list view
          * Calls SearchAge or SearchBirthAddress according to which radio button is selected
          **/
-        private void searchButton_Click(object sender, EventArgs e) {
+        private void SearchButton_Click(object sender, EventArgs e) {
             searchListView.Items.Clear();           
             if(searchTextBox.Text != "") {
                 try {
-                    if (ageRadioButton.Checked) searchAge();
-                    else searchBirthAddress();   
+                    if (ageRadioButton.Checked) SearchAge();
+                    else SearchBirthAddress();   
                 }
                 catch {
 
@@ -409,7 +410,7 @@ namespace MainForm {
          * Uses LinQ query to find all players in mlistPlayer with search age
          * Adds all selected players to search List view
          **/
-        private void searchAge() {
+        private void SearchAge() {
             int searchAge = Convert.ToInt32(searchTextBox.Text);
 
             IEnumerable<Player> playerAgeListQuery =
@@ -428,7 +429,7 @@ namespace MainForm {
        * Uses LinQ query to find all players in mlistPlayer with search birth Place
        * Adds all selected players to search List view
        **/
-        private void searchBirthAddress() {
+        private void SearchBirthAddress() {
             string searchLocation = searchTextBox.Text.ToLower();
 
             IEnumerable<Player> playerBPListQuery =
@@ -448,7 +449,7 @@ namespace MainForm {
          * Updates Player list view on team tab
          * to display players appropriate for selected team
          **/
-        private void teamListView_SelectedIndexChanged(object sender, EventArgs e) {
+        private void TeamListView_SelectedIndexChanged(object sender, EventArgs e) {
             teamPlayersListView.Items.Clear();
             for(byte i = 0; i < mlistTeam.Count; i++) {
                 if (teamListView.Items[i].Selected) {
@@ -473,7 +474,7 @@ namespace MainForm {
          * Updates team list view on player tab
          * to display team details appropriate for selected player
          **/
-        private void playerListView_SelectedIndexChanged(object sender, EventArgs e) {
+        private void PlayerListView_SelectedIndexChanged(object sender, EventArgs e) {
             playerTeamNameTextBox.Text = "";
             playerTeamGroundTextBox.Text = "";
             playerTeamCoachTextBox.Text = "";
@@ -505,7 +506,7 @@ namespace MainForm {
          * Hides Height vs Weight Chart
          * And shows AgeChart
          **/
-        private void ageHistogramButton_CheckedChanged(object sender, EventArgs e) {
+        private void AgeHistogramButton_CheckedChanged(object sender, EventArgs e) {
             if (ageHistogramButton.Checked) {
                 ageChart.Visible = true;
                 HeightvsWeightChart.Visible = false;
@@ -531,7 +532,7 @@ namespace MainForm {
          * Checks if string has any non digits 
          * display appropriate error message if it does
          **/
-        public bool hasNonDigitCharacters(string _line, string _var) {
+        public bool HasNonDigitCharacters(string _line, string _var) {
             foreach (char x in _line) {
                 if ((x < '0' || x > '9')) {
                     MessageBox.Show("Non-digit character found in " + _var + "\nonly(0-9) are acceptable values", "Non Digit Character", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -545,7 +546,7 @@ namespace MainForm {
         * Checks if string is empty
         * display appropriate error message if it is
         **/
-        public bool hasEmptyLine(string _line, string _var) {
+        public bool HasEmptyLine(string _line, string _var) {
             if (_line == "") {
                 MessageBox.Show(_var + " is Empty\nPlease fill everything out", "Missing Value", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
@@ -557,7 +558,7 @@ namespace MainForm {
        * Checks if string has over 21 characters
        * display appropriate error message if it does
        **/
-        public bool hasTooManyChars(string _line, string _var) {
+        public bool HasTooManyChars(string _line, string _var) {
             if (_line.Count() > 21) {
                 MessageBox.Show(_var + " has too many characters\n must contain (1-20) characters", "Too Many Characters", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return true;
@@ -569,7 +570,7 @@ namespace MainForm {
        * Checks if string is contains any digits or unwanted symbols
        * display appropriate error message if it does
        **/
-        public bool hasNonAlphabet(string _line, string _var) {
+        public bool HasNonAlphabet(string _line, string _var) {
             foreach (char x in _line.ToLower()) {
                 if ((x < 'a' || x > 'z') && x != ' ') {
                     MessageBox.Show(_var + " textbox found incorrect character\nonly (a-z, A-Z) are acceptable values", "Incorrect Character Found", MessageBoxButtons.OK, MessageBoxIcon.Error);

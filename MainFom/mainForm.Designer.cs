@@ -155,14 +155,14 @@
             this.teamsToolLoadItem.Name = "teamsToolLoadItem";
             this.teamsToolLoadItem.Size = new System.Drawing.Size(130, 26);
             this.teamsToolLoadItem.Text = "Teams";
-            this.teamsToolLoadItem.Click += new System.EventHandler(this.teamsToolLoad_Click);
+            this.teamsToolLoadItem.Click += new System.EventHandler(this.TeamsToolLoad_Click);
             // 
             // playersToolLoadItem
             // 
             this.playersToolLoadItem.Name = "playersToolLoadItem";
             this.playersToolLoadItem.Size = new System.Drawing.Size(130, 26);
             this.playersToolLoadItem.Text = "Players";
-            this.playersToolLoadItem.Click += new System.EventHandler(this.playersToolLoad_Click);
+            this.playersToolLoadItem.Click += new System.EventHandler(this.PlayersToolLoad_Click);
             // 
             // saveTool
             // 
@@ -178,14 +178,14 @@
             this.teamsToolSaveItem.Name = "teamsToolSaveItem";
             this.teamsToolSaveItem.Size = new System.Drawing.Size(130, 26);
             this.teamsToolSaveItem.Text = "Teams";
-            this.teamsToolSaveItem.Click += new System.EventHandler(this.teamsToolSave_Click);
+            this.teamsToolSaveItem.Click += new System.EventHandler(this.TeamsToolSave_Click);
             // 
             // playersToolSaveItem
             // 
             this.playersToolSaveItem.Name = "playersToolSaveItem";
             this.playersToolSaveItem.Size = new System.Drawing.Size(130, 26);
             this.playersToolSaveItem.Text = "Players";
-            this.playersToolSaveItem.Click += new System.EventHandler(this.playersToolSave_Click);
+            this.playersToolSaveItem.Click += new System.EventHandler(this.PlayersToolSave_Click);
             // 
             // openFileDialogue
             // 
@@ -250,7 +250,7 @@
             this.enrollmentButton.TabIndex = 4;
             this.enrollmentButton.Text = "Enroll";
             this.enrollmentButton.UseVisualStyleBackColor = true;
-            this.enrollmentButton.Click += new System.EventHandler(this.enrollmentButton_Click);
+            this.enrollmentButton.Click += new System.EventHandler(this.EnrollmentButton_Click);
             // 
             // enrollTeamListView
             // 
@@ -264,7 +264,7 @@
             this.enrollTeamListView.TabIndex = 3;
             this.enrollTeamListView.UseCompatibleStateImageBehavior = false;
             this.enrollTeamListView.View = System.Windows.Forms.View.Details;
-            this.enrollTeamListView.SelectedIndexChanged += new System.EventHandler(this.enrollTeamListView_SelectedIndexChanged);
+            this.enrollTeamListView.SelectedIndexChanged += new System.EventHandler(this.EnrollTeamListView_SelectedIndexChanged);
             // 
             // teamEnrollmentHeader
             // 
@@ -284,7 +284,7 @@
             this.enrollPlayerListView.TabIndex = 2;
             this.enrollPlayerListView.UseCompatibleStateImageBehavior = false;
             this.enrollPlayerListView.View = System.Windows.Forms.View.Details;
-            this.enrollPlayerListView.SelectedIndexChanged += new System.EventHandler(this.enrollPlayerListView_SelectedIndexChanged);
+            this.enrollPlayerListView.SelectedIndexChanged += new System.EventHandler(this.EnrollPlayerListView_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -381,7 +381,7 @@
             this.gotoAddTeamButton.TabIndex = 1;
             this.gotoAddTeamButton.Text = "Add Team";
             this.gotoAddTeamButton.UseVisualStyleBackColor = true;
-            this.gotoAddTeamButton.Click += new System.EventHandler(this.gotoAddTeamButton_Click);
+            this.gotoAddTeamButton.Click += new System.EventHandler(this.GotoAddTeamButton_Click);
             // 
             // teamListView
             // 
@@ -399,7 +399,7 @@
             this.teamListView.TabIndex = 0;
             this.teamListView.UseCompatibleStateImageBehavior = false;
             this.teamListView.View = System.Windows.Forms.View.Details;
-            this.teamListView.SelectedIndexChanged += new System.EventHandler(this.teamListView_SelectedIndexChanged);
+            this.teamListView.SelectedIndexChanged += new System.EventHandler(this.TeamListView_SelectedIndexChanged);
             // 
             // columnName
             // 
@@ -549,7 +549,7 @@
             this.gotoAddPlayerButton.TabIndex = 1;
             this.gotoAddPlayerButton.Text = "Add Player";
             this.gotoAddPlayerButton.UseVisualStyleBackColor = true;
-            this.gotoAddPlayerButton.Click += new System.EventHandler(this.gotoAddPlayerButton_Click);
+            this.gotoAddPlayerButton.Click += new System.EventHandler(this.GotoAddPlayerButton_Click);
             // 
             // playerListView
             // 
@@ -569,7 +569,7 @@
             this.playerListView.TabIndex = 0;
             this.playerListView.UseCompatibleStateImageBehavior = false;
             this.playerListView.View = System.Windows.Forms.View.Details;
-            this.playerListView.SelectedIndexChanged += new System.EventHandler(this.playerListView_SelectedIndexChanged);
+            this.playerListView.SelectedIndexChanged += new System.EventHandler(this.PlayerListView_SelectedIndexChanged);
             // 
             // columnID
             // 
@@ -649,7 +649,7 @@
             this.searchButton.TabIndex = 4;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // searchTextBox
             // 
@@ -782,7 +782,7 @@
             this.ageHistogramButton.TabIndex = 2;
             this.ageHistogramButton.Text = "Age";
             this.ageHistogramButton.UseVisualStyleBackColor = true;
-            this.ageHistogramButton.CheckedChanged += new System.EventHandler(this.ageHistogramButton_CheckedChanged);
+            this.ageHistogramButton.CheckedChanged += new System.EventHandler(this.AgeHistogramButton_CheckedChanged);
             // 
             // HeightvsWeightButton
             // 

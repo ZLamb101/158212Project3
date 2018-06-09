@@ -12,13 +12,13 @@ using Assignment3;
 using MainForm;
 
 namespace AddNewPlayerForm {
-    public partial class addNewPlayerForm : Form {
+    public partial class AddNewPlayerForm : Form {
 
         /***
          * AddNewPlayerForm Constructor
          * sets mForm
          **/
-        public addNewPlayerForm(mainForm _form) {
+        public AddNewPlayerForm(mainForm _form) {
             InitializeComponent();
             mform = _form;
             
@@ -37,8 +37,8 @@ namespace AddNewPlayerForm {
          **/
         private void AddPlayerButton_Click(object sender, EventArgs e) {         
             try {
-                if (!validateID() && !validateName() && !validateDOB() && !validateHeight() &&
-                  !validateWeight() && !validateBirthPlace() && !validateTeamName()) {
+                if (!ValidateID() && !ValidateName() && !ValidateDOB() && !ValidateHeight() &&
+                  !ValidateWeight() && !ValidateBirthPlace() && !ValidateTeamName()) {
                     DateTime birthDate = DateTime.ParseExact(addPlayerBirthDateDayTextBox.Text + "/" + addPlayerBirthDateMonthTextBox.Text + "/" + addPlayerBirthDateYearTextBox.Text, "dd/MM/yyyy",
                                                                 System.Globalization.CultureInfo.InvariantCulture);
 
@@ -46,9 +46,9 @@ namespace AddNewPlayerForm {
                                  birthDate, Convert.ToInt32(addPlayerHeightTextBox.Text), Convert.ToInt32(addPlayerWeightTextBox.Text),
                                 addPlayerBirthPlaceTextBox.Text, addPlayerTeamNameTextBox.Text);
 
-                    mform.listPlayer.Add(tempPlayer);
+                    mform.ListPlayer.Add(tempPlayer);
              
-                    foreach (Team x in mform.listTeam) {
+                    foreach (Team x in mform.ListTeam) {
                         if (x.Name == addPlayerTeamNameTextBox.Text) {
                             x.Players.Add(addPlayerFNameTextBox.Text + " " + addPlayerLNameTextBox.Text);
                             break;
@@ -69,10 +69,10 @@ namespace AddNewPlayerForm {
          * if fails validation returns true(it failed)
          * else returns false(it passed)
          **/
-        private bool validateID() {
-            if (mform.hasEmptyLine(addPlayerIDTextBox.Text, "ID")) return true;        
-            if (mform.hasNonDigitCharacters(addPlayerIDTextBox.Text, "ID")) return true;
-            foreach (Player x in mform.listPlayer) {
+        private bool ValidateID() {
+            if (mform.HasEmptyLine(addPlayerIDTextBox.Text, "ID")) return true;        
+            if (mform.HasNonDigitCharacters(addPlayerIDTextBox.Text, "ID")) return true;
+            foreach (Player x in mform.ListPlayer) {
                 if (x.ID == addPlayerIDTextBox.Text) {
                     MessageBox.Show("ID " + x.ID + " is already in use\nPlease choose a different value", "Not Unique", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return true;
@@ -86,11 +86,11 @@ namespace AddNewPlayerForm {
          * if fails validation returns true(it failed)
          * else returns false(it passed)
          **/
-        private bool validateName() {
-            if (mform.hasEmptyLine(addPlayerLNameTextBox.Text, "Last Name") || mform.hasEmptyLine(addPlayerFNameTextBox.Text, "First Name")) return true;            
+        private bool ValidateName() {
+            if (mform.HasEmptyLine(addPlayerLNameTextBox.Text, "Last Name") || mform.HasEmptyLine(addPlayerFNameTextBox.Text, "First Name")) return true;            
             string playerName = addPlayerFNameTextBox.Text + " " + addPlayerLNameTextBox.Text;
-            if (mform.hasTooManyChars(playerName, "Name")) return true;
-            if (mform.hasNonAlphabet(addPlayerFNameTextBox.Text, "Name")) return true;
+            if (mform.HasTooManyChars(playerName, "Name")) return true;
+            if (mform.HasNonAlphabet(addPlayerFNameTextBox.Text, "Name")) return true;
             return false;
         }
 
@@ -100,9 +100,9 @@ namespace AddNewPlayerForm {
          * if fails validation returns true(it failed)
          * else returns false(it passed)
          **/
-        private bool validateHeight() {
-            if (mform.hasEmptyLine(addPlayerHeightTextBox.Text, "Height")) return true;
-            if (mform.hasNonDigitCharacters(addPlayerHeightTextBox.Text, "Height")) return true;
+        private bool ValidateHeight() {
+            if (mform.HasEmptyLine(addPlayerHeightTextBox.Text, "Height")) return true;
+            if (mform.HasNonDigitCharacters(addPlayerHeightTextBox.Text, "Height")) return true;
             return false;
         }
 
@@ -111,9 +111,9 @@ namespace AddNewPlayerForm {
          * if fails validation returns true(it failed)
          * else returns false(it passed)
          **/
-        private bool validateWeight() {
-            if (mform.hasEmptyLine(addPlayerWeightTextBox.Text, "Weight")) return true;
-            if (mform.hasNonDigitCharacters(addPlayerWeightTextBox.Text, "Weight")) return true;
+        private bool ValidateWeight() {
+            if (mform.HasEmptyLine(addPlayerWeightTextBox.Text, "Weight")) return true;
+            if (mform.HasNonDigitCharacters(addPlayerWeightTextBox.Text, "Weight")) return true;
             return false;
         }
 
@@ -122,9 +122,9 @@ namespace AddNewPlayerForm {
          * if fails validation returns true(it failed)
          * else returns false(it passed)
          **/
-        private bool validateBirthPlace() {
-            if (mform.hasEmptyLine(addPlayerBirthPlaceTextBox.Text, "Birth Place")) return true;
-            if (mform.hasTooManyChars(addPlayerBirthPlaceTextBox.Text, "Birth Place")) return true;
+        private bool ValidateBirthPlace() {
+            if (mform.HasEmptyLine(addPlayerBirthPlaceTextBox.Text, "Birth Place")) return true;
+            if (mform.HasTooManyChars(addPlayerBirthPlaceTextBox.Text, "Birth Place")) return true;
             foreach (char x in addPlayerBirthPlaceTextBox.Text.ToLower()) {
                 if ((x < 'a' || x > 'z') && (x != ' ' && x != ',')) {
                     MessageBox.Show("Birth Place found incorrect character\nonly (a-z, A-Z) are acceptable values", "Incorrect Character Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -139,9 +139,9 @@ namespace AddNewPlayerForm {
          * if fails validation returns true(it failed)
          * else returns false(it passed)
          **/
-        private bool validateTeamName() {
+        private bool ValidateTeamName() {
             if (addPlayerTeamNameTextBox.Text == "") return false;
-            foreach (Team x in mform.listTeam) {
+            foreach (Team x in mform.ListTeam) {
                 if (x.Name.ToLower() == addPlayerTeamNameTextBox.Text.ToLower()) {
                     return false;
                 }
@@ -155,14 +155,14 @@ namespace AddNewPlayerForm {
          * if fails validation returns true(it failed)
          * else returns false(it passed)
          **/
-        private bool validateDOB() {            
-            if (mform.hasEmptyLine(addPlayerBirthDateDayTextBox.Text,"Birth Date") || mform.hasEmptyLine(addPlayerBirthDateMonthTextBox.Text, "Birth Date") || mform.hasEmptyLine(addPlayerBirthDateYearTextBox.Text, "Birth Date")) {
+        private bool ValidateDOB() {            
+            if (mform.HasEmptyLine(addPlayerBirthDateDayTextBox.Text,"Birth Date") || mform.HasEmptyLine(addPlayerBirthDateMonthTextBox.Text, "Birth Date") || mform.HasEmptyLine(addPlayerBirthDateYearTextBox.Text, "Birth Date")) {
                 return true;
             }      
-            if (mform.hasNonDigitCharacters(addPlayerBirthDateDayTextBox.Text, "Birth Date") || mform.hasNonDigitCharacters(addPlayerBirthDateMonthTextBox.Text, "Birth Date") || mform.hasNonDigitCharacters(addPlayerBirthDateYearTextBox.Text, "Birth Date")) {
+            if (mform.HasNonDigitCharacters(addPlayerBirthDateDayTextBox.Text, "Birth Date") || mform.HasNonDigitCharacters(addPlayerBirthDateMonthTextBox.Text, "Birth Date") || mform.HasNonDigitCharacters(addPlayerBirthDateYearTextBox.Text, "Birth Date")) {
                 return true;
             }
-            if (validateDayMonthYear()) return true;
+            if (ValidateDayMonthYear()) return true;
             return false;
         }
 
@@ -170,7 +170,7 @@ namespace AddNewPlayerForm {
          * Checks if day, month and year strings are valid
          * returns true if not valid
          **/
-        private bool validateDayMonthYear() {
+        private bool ValidateDayMonthYear() {
             int day = Convert.ToInt32(addPlayerBirthDateDayTextBox.Text);
             int month = Convert.ToInt32(addPlayerBirthDateMonthTextBox.Text);
             int year = Convert.ToInt32(addPlayerBirthDateYearTextBox.Text);
@@ -183,7 +183,7 @@ namespace AddNewPlayerForm {
                 case 10:
                 case 12:
                     if (day > 31) {
-                        dateError("day");
+                        DateError("day");
                         return true;
                     }
                     break;
@@ -192,25 +192,25 @@ namespace AddNewPlayerForm {
                 case 9:
                 case 11:
                     if (day > 30) {
-                        dateError("day");
+                        DateError("day");
                         return true;
                     }
                     break;
                 case 2:
-                    if (isLeapyear(year)) {
+                    if (IsLeapyear(year)) {
                         if (day > 29) {
-                            dateError("day");
+                            DateError("day");
                             return true;
                         }
                     } else {
                         if (day > 28) {
-                            dateError("day");
+                            DateError("day");
                             return true;
                         }
                     }
                     break;
                 default:
-                    dateError("month");
+                    DateError("month");
                     return true;
             }
             if (year > DateTime.Now.Year) {
@@ -225,7 +225,7 @@ namespace AddNewPlayerForm {
          * return true if Leap year
          * else return false
          **/
-        private bool isLeapyear(int _year) {
+        private bool IsLeapyear(int _year) {
             if(_year % 400 == 0) {
                 return true;
             }else if(_year % 100 == 0) {
@@ -240,7 +240,7 @@ namespace AddNewPlayerForm {
          * Display a Warning Message 
          * About incorrect date input
          **/
-        private void dateError(string _var) {
+        private void DateError(string _var) {
             MessageBox.Show("Birth Date " + _var +" incorrect\nenter valid date", "Incorrect Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }

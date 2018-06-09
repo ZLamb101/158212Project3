@@ -1,5 +1,5 @@
 ﻿namespace AddNewTeamForm {
-    partial class addNewTeamForm {
+    partial class AddNewTeamForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -44,7 +44,7 @@
             this.addTeamButton.TabIndex = 0;
             this.addTeamButton.Text = "Add Team";
             this.addTeamButton.UseVisualStyleBackColor = true;
-            this.addTeamButton.Click += new System.EventHandler(this.addTeamButton_Click);
+            this.addTeamButton.Click += new System.EventHandler(this.AddTeamButton_Click);
             // 
             // addTeamNameLabel
             // 
