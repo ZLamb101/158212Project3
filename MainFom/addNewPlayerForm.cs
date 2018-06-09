@@ -32,7 +32,7 @@ namespace AddNewPlayerForm {
          * checks all input validation
          * if fail display appropriate error message
          * if pass converts date string into datetime
-         * and adds players to mlistPlayer in mForm
+         * and adds players to mAllPlayers in mForm
          * closes ActiveForm
          **/
         private void AddPlayerButton_Click(object sender, EventArgs e) {         
@@ -46,9 +46,9 @@ namespace AddNewPlayerForm {
                                  birthDate, Convert.ToInt32(addPlayerHeightTextBox.Text), Convert.ToInt32(addPlayerWeightTextBox.Text),
                                 addPlayerBirthPlaceTextBox.Text, addPlayerTeamNameTextBox.Text);
 
-                    mform.ListPlayer.Add(tempPlayer);
+                    mform.AllPlayers.Add(tempPlayer);
              
-                    foreach (Team x in mform.ListTeam) {
+                    foreach (Team x in mform.AllTeams) {
                         if (x.Name == addPlayerTeamNameTextBox.Text) {
                             x.Players.Add(addPlayerFNameTextBox.Text + " " + addPlayerLNameTextBox.Text);
                             break;
@@ -72,7 +72,7 @@ namespace AddNewPlayerForm {
         private bool ValidateID() {
             if (mform.HasEmptyLine(addPlayerIDTextBox.Text, "ID")) return true;        
             if (mform.HasNonDigitCharacters(addPlayerIDTextBox.Text, "ID")) return true;
-            foreach (Player x in mform.ListPlayer) {
+            foreach (Player x in mform.AllPlayers) {
                 if (x.ID == addPlayerIDTextBox.Text) {
                     MessageBox.Show("ID " + x.ID + " is already in use\nPlease choose a different value", "Not Unique", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return true;
@@ -141,7 +141,7 @@ namespace AddNewPlayerForm {
          **/
         private bool ValidateTeamName() {
             if (addPlayerTeamNameTextBox.Text == "") return false;
-            foreach (Team x in mform.ListTeam) {
+            foreach (Team x in mform.AllTeams) {
                 if (x.Name.ToLower() == addPlayerTeamNameTextBox.Text.ToLower()) {
                     return false;
                 }

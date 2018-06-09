@@ -29,7 +29,7 @@ namespace AddNewTeamForm {
          * When Add Team Button is clicked
          * checks all input validation
          * if fail display appropriate error message
-         * if pass adds team to ListTeam in mForm
+         * if pass adds team to AllTeams in mForm
          * closes ActiveForm
          **/
         private void AddTeamButton_Click(object sender, EventArgs e) {
@@ -37,7 +37,7 @@ namespace AddNewTeamForm {
                 if (!ValidateTeamName() && !ValidateGround() && !ValidateCoach() && !ValidateYearFounded() && !ValidateRegion()) {
                     Team tempTeam = new Team(addTeamNameTextBox.Text, addTeamGroundTextBox.Text,
                            addTeamCoachTextBox.Text, Convert.ToInt32(addTeamYearFoundedTextBox.Text), addTeamRegionTextBox.Text);
-                    mForm.ListTeam.Add(tempTeam);
+                    mForm.AllTeams.Add(tempTeam);
 
                     ActiveForm.Close();
                 }
@@ -56,7 +56,7 @@ namespace AddNewTeamForm {
             if (mForm.HasEmptyLine(addTeamNameTextBox.Text, "Team Name")) return true;         
             if (mForm.HasTooManyChars(addTeamNameTextBox.Text, "Team Name")) return true;
             if (mForm.HasNonAlphabet(addTeamNameTextBox.Text, "Team Name")) return true;
-            foreach (Team x in mForm.ListTeam) {
+            foreach (Team x in mForm.AllTeams) {
                 if (x.Name.ToLower() == addTeamNameTextBox.Text.ToLower()) {
                     MessageBox.Show("Team entered already exists\nEnter a Name that does not exist", "Team Already Exists", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return true;
