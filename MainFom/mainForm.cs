@@ -171,7 +171,7 @@ namespace MainForm {
         * adds Height, weight and age to necessary place for charts
         **/
         private void NewPlayerUpdate(Player tempPlayer) {
-            ListViewItem item = new ListViewItem(new[] { tempPlayer.ID, tempPlayer.Name, Convert.ToString(tempPlayer.BirthDate.Date), Convert.ToString(tempPlayer.Height), Convert.ToString(tempPlayer.Weight), tempPlayer.BirthPlace, tempPlayer.TeamName });
+            ListViewItem item = new ListViewItem(new[] { tempPlayer.ID, tempPlayer.Name, Convert.ToString(tempPlayer.BirthDate), Convert.ToString(tempPlayer.Height), Convert.ToString(tempPlayer.Weight), tempPlayer.BirthPlace, tempPlayer.TeamName });
             playerListView.Items.Add(item);
 
             ListViewItem item2 = new ListViewItem(new[] { tempPlayer.Name, tempPlayer.TeamName });
@@ -494,6 +494,9 @@ namespace MainForm {
             catch { }
         }
 
+        /***
+         * updates player team details textboxes
+         **/
         private void updatePlayerTeamDetails(Team x) {
             playerTeamNameTextBox.Text = x.Name;
             playerTeamGroundTextBox.Text = x.Ground;
@@ -501,7 +504,11 @@ namespace MainForm {
             playerTeamYearFoundedTextBox.Text = Convert.ToString(x.YearFounded);
             playerTeamRegionTextBox.Text = x.Region;
         }
+        
 
+        /***
+         * Clears player team details textboxes
+         **/
         private void clearPlayerTeamDetails() {
             playerTeamNameTextBox.Text = "";
             playerTeamGroundTextBox.Text = "";
