@@ -171,7 +171,7 @@ namespace MainForm {
         * adds Height, weight and age to necessary place for charts
         **/
         private void NewPlayerUpdate(Player tempPlayer) {
-            ListViewItem item = new ListViewItem(new[] { tempPlayer.ID, tempPlayer.Name, Convert.ToString(tempPlayer.BirthDate), Convert.ToString(tempPlayer.Height), Convert.ToString(tempPlayer.Weight), tempPlayer.BirthPlace, tempPlayer.TeamName });
+            ListViewItem item = new ListViewItem(new[] { tempPlayer.ID, tempPlayer.Name, Convert.ToString(tempPlayer.BirthDate.ToShortDateString()), Convert.ToString(tempPlayer.Height), Convert.ToString(tempPlayer.Weight), tempPlayer.BirthPlace, tempPlayer.TeamName });
             playerListView.Items.Add(item);
 
             ListViewItem item2 = new ListViewItem(new[] { tempPlayer.Name, tempPlayer.TeamName });
@@ -282,7 +282,7 @@ namespace MainForm {
             addPlayerForm.ShowDialog();
             
             if (mAllPlayers.Count != i) {          
-                NewPlayerUpdate(mAllPlayers[i+2]);
+                NewPlayerUpdate(mAllPlayers[i]);
             }
 
         }
@@ -298,7 +298,7 @@ namespace MainForm {
             addTeamForm.ShowDialog();
             
             if (mAllTeams.Count != i) {              
-                NewTeamUpdate(mAllTeams[i+2]);
+                NewTeamUpdate(mAllTeams[i]);
             }
         }
 
@@ -363,7 +363,7 @@ namespace MainForm {
             mAllPlayers[playerIndex].TeamName = mAllTeams[teamIndex].Name;
                               
             enrollPlayerListView.Items[playerIndex] = new ListViewItem(new[] { mAllPlayers[playerIndex].Name, mAllPlayers[playerIndex].TeamName });
-            playerListView.Items[playerIndex] = new ListViewItem(new[] { mAllPlayers[playerIndex].ID, mAllPlayers[playerIndex].Name, Convert.ToString(mAllPlayers[playerIndex].BirthDate), Convert.ToString(mAllPlayers[playerIndex].Height), Convert.ToString(mAllPlayers[playerIndex].Weight), mAllPlayers[playerIndex].BirthPlace, mAllPlayers[playerIndex].TeamName });
+            playerListView.Items[playerIndex] = new ListViewItem(new[] { mAllPlayers[playerIndex].ID, mAllPlayers[playerIndex].Name, Convert.ToString(mAllPlayers[playerIndex].BirthDate.ToShortDateString()), Convert.ToString(mAllPlayers[playerIndex].Height), Convert.ToString(mAllPlayers[playerIndex].Weight), mAllPlayers[playerIndex].BirthPlace, mAllPlayers[playerIndex].TeamName });
             
             teamListView.Items[teamIndex] = new ListViewItem(new[] { mAllTeams[teamIndex].Name, mAllTeams[teamIndex].Ground, mAllTeams[teamIndex].Coach, Convert.ToString(mAllTeams[teamIndex].YearFounded), mAllTeams[teamIndex].Region });
         }
@@ -418,7 +418,7 @@ namespace MainForm {
                 select i;
 
             foreach (Player x in playerAgeListQuery) {
-                ListViewItem newSearchItem = new ListViewItem(new[] { x.ID, x.Name, Convert.ToString(x.BirthDate), Convert.ToString(x.Height), Convert.ToString(x.Weight), x.BirthPlace, x.TeamName });
+                ListViewItem newSearchItem = new ListViewItem(new[] { x.ID, x.Name, Convert.ToString(x.BirthDate.ToShortDateString()), Convert.ToString(x.Height), Convert.ToString(x.Weight), x.BirthPlace, x.TeamName });
                 searchListView.Items.Add(newSearchItem);
             }
         }
@@ -437,7 +437,7 @@ namespace MainForm {
                 select i;
 
             foreach (Player x in playerBPListQuery) {
-                ListViewItem newSearchItem = new ListViewItem(new[] { x.ID, x.Name, Convert.ToString(x.BirthDate), Convert.ToString(x.Height), Convert.ToString(x.Weight), x.BirthPlace, x.TeamName });
+                ListViewItem newSearchItem = new ListViewItem(new[] { x.ID, x.Name, Convert.ToString(x.BirthDate.ToShortDateString()), Convert.ToString(x.Height), Convert.ToString(x.Weight), x.BirthPlace, x.TeamName });
                 searchListView.Items.Add(newSearchItem);
             }
         }
@@ -460,7 +460,7 @@ namespace MainForm {
 
 
                         foreach (Player x in listOfTeamPlayersQuery) {
-                            ListViewItem item = new ListViewItem(new[] { x.ID, x.Name, Convert.ToString(x.BirthDate), Convert.ToString(x.Height), Convert.ToString(x.Weight), x.BirthPlace });
+                            ListViewItem item = new ListViewItem(new[] { x.ID, x.Name, Convert.ToString(x.BirthDate.ToShortDateString()), Convert.ToString(x.Height), Convert.ToString(x.Weight), x.BirthPlace });
                             teamPlayersListView.Items.Add(item);
                         }
                         break;
@@ -495,7 +495,7 @@ namespace MainForm {
         }
 
         /***
-         * updates player team details textboxes
+         * Clears player team details textboxes
          **/
         private void updatePlayerTeamDetails(Team x) {
             playerTeamNameTextBox.Text = x.Name;
