@@ -1,0 +1,3 @@
+Auckland;Eden Park;Tom McCartney;1883;Auckland
+Hurricanes;Whakarua Park;Wayne Ensor,Troy Para; 1922;East Coast
+Blues;North Harbour Stadium;Tom Coventry;1985;North Harbour
